@@ -6,50 +6,50 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 210 20% 92%;
+    --background: 210 40% 98%;
+    --foreground: 220 25% 14%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 210 20% 92%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 14%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 14%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 16% 16%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: 200 60% 94%;
+    --secondary-foreground: 210 40% 30%;
 
-    --muted: 220 14% 14%;
-    --muted-foreground: 215 12% 55%;
+    --muted: 210 30% 94%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 220 20% 6%;
+    --accent: 170 70% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 18%;
-    --input: 220 14% 18%;
-    --ring: 217 91% 60%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 210 100% 50%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 18% 8%;
-    --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 220 20% 6%;
-    --sidebar-accent: 220 16% 14%;
-    --sidebar-accent-foreground: 210 20% 85%;
-    --sidebar-border: 220 14% 18%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 14%;
+    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 60% 94%;
+    --sidebar-accent-foreground: 210 40% 30%;
+    --sidebar-border: 210 20% 88%;
+    --sidebar-ring: 210 100% 50%;
 
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --glow-primary: 0 0 40px hsl(217 91% 60% / 0.15);
-    --glow-strong: 0 0 60px hsl(217 91% 60% / 0.25);
+    --glow-primary: 0 4px 20px hsl(210 100% 50% / 0.1);
+    --glow-strong: 0 8px 30px hsl(210 100% 50% / 0.18);
   }
 }
 
@@ -71,7 +71,7 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(217 91% 60%), hsl(200 90% 70%));
+    background-image: linear-gradient(135deg, hsl(210 100% 50%), hsl(170 70% 45%));
   }
 
   .card-glow {
@@ -84,6 +84,6 @@
   }
 
   .glass {
-    @apply bg-card/80 backdrop-blur-md border border-border;
+    @apply bg-card/90 backdrop-blur-md border border-border;
   }
 }
