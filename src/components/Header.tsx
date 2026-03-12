@@ -14,6 +14,9 @@ const Header = () => {
           <Link to="/#apps" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Applications
           </Link>
+          <Link to="/#sites" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Sites Web
+          </Link>
         </nav>
       </div>
     </header>
