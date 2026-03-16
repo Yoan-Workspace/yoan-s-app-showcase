@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import yoanLogo from "@/assets/yoanLogo.png";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -25,7 +26,7 @@ const Header = () => {
     i18n.changeLanguage(i18n.language === "en" ? "fr" : "en");
   };
 
-  const navItems = (
+  const navLinks = (
     <>
       <Link
         to="/"
@@ -36,19 +37,19 @@ const Header = () => {
       </Link>
       <button
         onClick={() => scrollToSection("apps")}
-        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors text-left"
       >
         {t("header.apps")}
       </button>
       <button
         onClick={() => scrollToSection("sites")}
-        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors text-left"
       >
         {t("header.websites")}
       </button>
       <button
         onClick={() => scrollToSection("contact")}
-        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors text-left"
       >
         {t("header.contact")}
       </button>
@@ -58,13 +59,19 @@ const Header = () => {
   return (
     <header className="glass sticky top-0 z-50">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="font-heading text-xl font-bold text-foreground tracking-tight">
-          YS<span className="text-gradient">.</span>dev
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src={yoanLogo}
+            alt="Yoan Soussand"
+            className="h-8 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems}
+          {navLinks}
           <button
             onClick={toggleLang}
             className="text-xs font-semibold px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
@@ -73,25 +80,27 @@ const Header = () => {
           </button>
         </nav>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-muted-foreground hover:text-foreground"
-        >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        {/* Mobile — lang + burger */}
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={toggleLang}
+            className="text-xs font-semibold px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:text-foreground transition-all"
+          >
+            {i18n.language === "en" ? "FR" : "EN"}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 text-muted-foreground hover:text-foreground"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile nav */}
       {mobileOpen && (
         <nav className="md:hidden border-t border-border px-6 py-4 flex flex-col gap-4 bg-card/95 backdrop-blur-xl">
-          {navItems}
-          <button
-            onClick={toggleLang}
-            className="text-xs font-semibold px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:text-foreground w-fit"
-          >
-            {i18n.language === "en" ? "FR" : "EN"}
-          </button>
+          {navLinks}
         </nav>
       )}
     </header>
