@@ -8,11 +8,16 @@
     "badge": "iOS & Web Developer",
     "subtitle": "Passionate developer, I create intuitive and high-performance mobile apps and websites."
   },
+  "lastUpdated": "Last updated",
   "sections": {
     "myApps": "My",
     "myAppsHighlight": "Apps",
     "myWebsites": "My",
     "myWebsitesHighlight": "Websites"
+  },
+  "terms": {
+  "leacDescription": "The terms of use for {{appName}} are governed by Apple's standard End User License Agreement (EULA). By downloading and using this application, you agree to the terms of this agreement.",
+  "leacLink": "View Apple's End User License Agreement (EULA)"
   },
   "apps": {
     "rappel-produit": {
@@ -24,7 +29,64 @@
         "Search by name or category",
         "Official government data",
         "Quick alert sharing"
-      ]
+      ],
+      "privacy": {
+  "lastUpdated": "March 16, 2026",
+  "sections": [
+    {
+      "title": "1. Introduction",
+      "content": "This privacy policy describes how Rappel Produit, developed by Yoan Soussand, collects, uses and protects your personal information. By using the application, you agree to the practices described in this policy."
+    },
+    {
+      "title": "2. Data collected",
+      "content": "Rappel Produit does not create user accounts and does not collect personally identifiable data. Data collected is limited to anonymous advertising identifiers used by Google AdMob for advertising delivery."
+    },
+    {
+      "title": "3. Government data",
+      "content": "Product recall information comes exclusively from the official French government website rappel.conso.gouv.fr. This data is public and Rappel Produit does not store it on its own servers."
+    },
+    {
+      "title": "4. Google AdMob advertising",
+      "content": "Rappel Produit is funded through advertising via Google AdMob. Google AdMob may collect and use data to serve personalized ads, including your advertising identifier (IDFA), approximate location data and anonymous usage data. This data is processed in accordance with Google's privacy policy: policies.google.com/privacy"
+    },
+    {
+      "title": "5. App Tracking Transparency (ATT)",
+      "content": "In accordance with Apple's requirements, Rappel Produit will ask for permission to track your activity via Google AdMob. If you decline, non-personalized ads will be shown. You can change your choice from Settings → Privacy → Tracking."
+    },
+    {
+      "title": "6. GDPR consent — Google AdMob",
+      "content": "For users in the European Economic Area, Rappel Produit uses Google's UMP SDK to collect your consent in accordance with GDPR before any advertising data collection."
+    },
+    {
+      "title": "7. Data sharing",
+      "content": "We do not sell your personal data to third parties. The only data shared are anonymous advertising identifiers transmitted to Google AdMob for advertising delivery, subject to your consent."
+    },
+    {
+      "title": "8. Third-party services",
+      "content": "Rappel Produit uses Google AdMob (advertising) and the official government API rappel.conso.gouv.fr (recall data). These services are subject to their own privacy policies."
+    },
+    {
+      "title": "9. Security",
+      "content": "Rappel Produit does not store any personal data on its own servers. Communications with the government API are made via secure HTTPS connections."
+    },
+    {
+      "title": "10. Your rights (GDPR)",
+      "content": "In accordance with GDPR, you have the rights of access, rectification, erasure and objection. To exercise your rights regarding Google AdMob data, visit myaccount.google.com/data-and-privacy."
+    },
+    {
+      "title": "11. Children",
+      "content": "Rappel Produit is not intended for children under 13 years of age due to the presence of Google AdMob advertising. We encourage you to configure parental controls on the device."
+    },
+    {
+      "title": "12. Changes",
+      "content": "We reserve the right to update this privacy policy, particularly in the event of changes to Google AdMob's terms of use."
+    },
+    {
+      "title": "13. Contact",
+      "content": "For any questions regarding this privacy policy, contact us through the application page on the App Store."
+    }
+  ]
+}
     },
     "mysterypix": {
       "tagline": "Guess the mystery word",
@@ -35,7 +97,60 @@
         "Artificial intelligence",
         "Dares and truths",
         "Premium mode with unlimited levels"
-      ]
+      ],
+      "privacy": {
+  "lastUpdated": "March 16, 2026",
+  "sections": [
+    {
+      "title": "1. Introduction",
+      "content": "This privacy policy describes how MysteryPix, developed by Yoan Soussand, collects, uses and protects your personal information. By using the application, you agree to the practices described in this policy."
+    },
+    {
+      "title": "2. Data collected",
+      "content": "MysteryPix may collect certain data as part of its operation, including through integrated advertising and in-app purchases. This data may include anonymous advertising identifiers, progression data and information related to purchases made through the Apple App Store."
+    },
+    {
+      "title": "3. Local storage",
+      "content": "Game progress data, scores and preferences are stored locally on your device. This data is only accessible by the application and is permanently deleted if you uninstall the application."
+    },
+    {
+      "title": "4. Advertising",
+      "content": "MysteryPix integrates advertising for free version users. These ads are served through third-party advertising networks that may collect anonymous data for advertising targeting purposes. In accordance with Apple's ATT policy, your explicit consent will be requested before any data collection for advertising purposes."
+    },
+    {
+      "title": "5. App Tracking Transparency (ATT)",
+      "content": "In accordance with Apple's requirements, MysteryPix will ask for permission to track your activity. If you decline, non-personalized ads will be shown. Your choice does not affect your access to features. You can change your choice from Settings → Privacy → Tracking."
+    },
+    {
+      "title": "6. Purchases and subscriptions",
+      "content": "MysteryPix offers a Premium subscription to remove ads and access all features. Transactions are entirely managed by Apple. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period. Manage your subscription from Settings → Apple ID → Subscriptions."
+    },
+    {
+      "title": "7. Third-party services",
+      "content": "MysteryPix may integrate third-party SDKs for advertising delivery, subject to their own privacy policies. These services may collect anonymous data in accordance with your ATT preferences."
+    },
+    {
+      "title": "8. Data sharing",
+      "content": "We do not sell your personal data to third parties. Anonymous data collected through advertising networks is used solely for advertising delivery purposes."
+    },
+    {
+      "title": "9. Your rights (GDPR)",
+      "content": "In accordance with GDPR, you have the rights of access, rectification, erasure and objection. You can reset your advertising identifier from Settings → Privacy → Apple Advertising."
+    },
+    {
+      "title": "10. Children",
+      "content": "MysteryPix is not intended for children under 13 years of age due to the presence of advertising. We encourage you to configure parental controls on the device."
+    },
+    {
+      "title": "11. Changes",
+      "content": "We reserve the right to update this privacy policy at any time. Important changes will be notified to you via an application update."
+    },
+    {
+      "title": "12. Contact",
+      "content": "For any questions regarding this privacy policy, contact us through the application page on the App Store."
+    }
+  ]
+}
     },
     "math-match-memory": {
       "tagline": "Learn math while having fun",
@@ -46,8 +161,117 @@
         "Multiplication, addition, subtraction, division",
         "Progress tracking",
         "Guaranteed privacy"
-      ]
+      ],
+      "privacy": {
+  "lastUpdated": "March 16, 2026",
+  "sections": [
+    {
+      "title": "1. Introduction",
+      "content": "This privacy policy describes how Math-Match Memory, developed by Yoan Soussand, collects, uses and protects your personal information."
+    },
+    {
+      "title": "2. Data collected",
+      "content": "Math-Match Memory does not collect any personally identifiable data. All data (scores, progress, completed levels) is stored locally on your device via SwiftData. No data is transmitted to external servers."
+    },
+    {
+      "title": "3. Local storage",
+      "content": "The application uses SwiftData, Apple's native storage technology, to save your progress data. This data remains exclusively on your device and is permanently deleted if you uninstall the application."
+    },
+    {
+      "title": "4. In-app purchases",
+      "content": "Math-Match Memory offers a one-time purchase through the Apple App Store to unlock full access. Transactions are entirely managed by Apple. We do not collect or store any payment information."
+    },
+    {
+      "title": "5. Advertising and tracking",
+      "content": "Math-Match Memory contains no advertising and does not use any tracking, analytics or behavioral data collection tools. Your use of the application remains entirely private."
+    },
+    {
+      "title": "6. Third-party services",
+      "content": "Math-Match Memory uses only Apple's native frameworks (SwiftData, StoreKit). No third-party SDK is integrated into the application."
+    },
+    {
+      "title": "7. Children and COPPA",
+      "content": "Math-Match Memory is an educational application designed for all ages, including children. The application does not collect any personal data, contains no advertising and offers no social interaction. It complies with the requirements of the COPPA (Children's Online Privacy Protection Act)."
+    },
+    {
+      "title": "8. Security",
+      "content": "Your data is stored only on your local device. We do not collect any personal data, which eliminates any risk of data breach on our end."
+    },
+    {
+      "title": "9. Your rights",
+      "content": "You can delete all your data at any time by uninstalling the application. Your progress data will be permanently deleted from your device."
+    },
+    {
+      "title": "10. Changes",
+      "content": "We reserve the right to update this privacy policy at any time. Any changes will be reflected by a new update date at the top of this page."
+    },
+    {
+      "title": "11. Contact",
+      "content": "For any questions regarding this privacy policy, contact us through the application page on the App Store."
     }
+  ]
+}
+    },
+    "allfaves": {
+  "tagline": "Save what inspires you, find it in seconds",
+  "description": "Stop losing your favorite posts. Save any post, article or link from Instagram, TikTok, LinkedIn or any website in one tap — and find it again instantly. Organize with custom categories, filter by platform, and share collections with friends. Your favorites, finally under control.",
+  "category": "Productivity",
+  "features": [
+    "Save from any app with the Share Extension",
+    "Custom categories with icons and colors",
+    "Share collections with friends",
+    "iCloud sync across all devices"
+  ],
+  "privacy": {
+  "lastUpdated": "March 16, 2026",
+  "sections": [
+    {
+      "title": "1. Introduction",
+      "content": "This privacy policy describes how AllFaves, developed by Yoan Soussand, collects, uses and protects your personal information."
+    },
+    {
+      "title": "2. Data collected",
+      "content": "AllFaves does not collect any personally identifiable data. The posts, categories and favorites you save are stored locally on your device and synchronized only through your personal iCloud account. We have no access to your iCloud data."
+    },
+    {
+      "title": "3. iCloud and synchronization",
+      "content": "AllFaves uses iCloud to synchronize your data between your Apple devices. This data is stored in your private iCloud space and is governed by Apple's privacy policy. We have no access to your synchronized data."
+    },
+    {
+      "title": "4. CloudKit — Post sharing",
+      "content": "When you use the sharing feature, selected posts are temporarily stored in Apple's CloudKit public database for 24 hours, allowing your recipient to import them. This data is automatically deleted after expiration. Only posts explicitly shared by you are affected."
+    },
+    {
+      "title": "5. In-app purchases",
+      "content": "AllFaves offers a one-time Premium purchase through the Apple App Store. Transactions are entirely managed by Apple. We do not collect or store any payment information."
+    },
+    {
+      "title": "6. Advertising and tracking",
+      "content": "AllFaves contains no advertising and does not use any tracking, analytics or behavioral data collection tools. Your use of the application remains entirely private."
+    },
+    {
+      "title": "7. Third-party services",
+      "content": "AllFaves uses Apple's LinkPresentation to retrieve metadata and images from saved links. This operation is performed directly from your device without going through our servers. No third-party SDK is integrated into the application."
+    },
+    {
+      "title": "8. Security",
+      "content": "Your data is stored locally on your device and in your private iCloud space. We do not collect personal data, which minimizes any risk of data breach on our end."
+    },
+    {
+      "title": "9. Your rights",
+      "content": "You can delete all your data at any time by uninstalling the application and removing AllFaves data from Settings → iCloud → Manage Storage."
+    },
+    {
+      "title": "10. Changes",
+      "content": "We reserve the right to update this privacy policy at any time. Any changes will be reflected by a new update date at the top of this page."
+    },
+    {
+      "title": "11. Contact",
+      "content": "For any questions regarding this privacy policy, contact us through the application: About → Contact us."
+    }
+  ]
+}
+}
   },
   "websites": {
     "pytheas": {
@@ -75,4 +299,5 @@
     "rights": "All rights reserved.",
     "home": "Home"
   }
+
 }

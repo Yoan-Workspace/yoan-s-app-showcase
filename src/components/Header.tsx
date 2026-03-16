@@ -1,8 +1,23 @@
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToSection = (id: string) => {
+    if (location.pathname !== "/") {
+      // Si on n'est pas sur la page principale, naviguer puis scroller
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      // Déjà sur la page principale, scroller directement
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const toggleLang = () => {
     i18n.changeLanguage(i18n.language === "en" ? "fr" : "en");
@@ -18,12 +33,18 @@ const Header = () => {
           <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             {t("header.home")}
           </Link>
-          <Link to="/#apps" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <button
+            onClick={() => scrollToSection("apps")}
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             {t("header.apps")}
-          </Link>
-          <Link to="/#sites" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          </button>
+          <button
+            onClick={() => scrollToSection("sites")}
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             {t("header.websites")}
-          </Link>
+          </button>
           <button
             onClick={toggleLang}
             className="text-xs px-2 py-1 rounded-md border border-border text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
