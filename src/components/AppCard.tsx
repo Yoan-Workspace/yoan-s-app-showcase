@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AppData } from "@/data/types";
 import { ExternalLink } from "lucide-react";
 
@@ -7,6 +8,8 @@ interface AppCardProps {
 }
 
 const AppCard = ({ app }: AppCardProps) => {
+  const { t } = useTranslation();
+
   return (
     <Link
       to={`/app/${app.id}`}
@@ -15,7 +18,7 @@ const AppCard = ({ app }: AppCardProps) => {
       <div className="flex items-start gap-5">
         <img
           src={app.icon}
-          alt={`Icône ${app.name}`}
+          alt={app.name}
           className="w-20 h-20 rounded-2xl shadow-lg flex-shrink-0"
         />
         <div className="flex-1 min-w-0">
@@ -23,10 +26,10 @@ const AppCard = ({ app }: AppCardProps) => {
             {app.name}
           </h3>
           <span className="inline-block mt-1 text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
-            {app.category}
+            {t(`apps.${app.id}.category`)}
           </span>
           <p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-2">
-            {app.tagline}
+            {t(`apps.${app.id}.tagline`)}
           </p>
         </div>
         <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
