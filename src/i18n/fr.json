@@ -1,0 +1,78 @@
+{
+  "header": {
+    "home": "Accueil",
+    "apps": "Applications",
+    "websites": "Sites Web"
+  },
+  "hero": {
+    "badge": "Développeur iOS & Web",
+    "subtitle": "Développeur passionné, je crée des applications mobiles et des sites web intuitifs et performants."
+  },
+  "sections": {
+    "myApps": "Mes",
+    "myAppsHighlight": "Applications",
+    "myWebsites": "Mes",
+    "myWebsitesHighlight": "Sites Web"
+  },
+  "apps": {
+    "rappel-produit": {
+      "tagline": "Vérifiez les rappels de produits en un instant",
+      "description": "Restez informé pour consommer en toute sérénité. Scannez un produit, recherchez par nom ou catégorie, et découvrez immédiatement s'il fait l'objet d'un rappel officiel. Protégez vos proches en partageant l'info en un clic ! Toutes les données proviennent du site officiel gouvernemental rappel.conso.gouv.fr.",
+      "category": "Shopping",
+      "features": [
+        "Scan de code-barres",
+        "Recherche par nom ou catégorie",
+        "Données officielles gouvernementales",
+        "Partage rapide des alertes"
+      ]
+    },
+    "mysterypix": {
+      "tagline": "Devinez le mot mystère",
+      "description": "Le jeu parfait pour pimenter vos soirées entre amis ou en famille ! Choisissez une image mystérieuse, devinez le mot caché et lancez des défis ou des vérités piquantes. Jouez en solo, en multijoueur ou avec l'IA.",
+      "category": "Jeux de société",
+      "features": [
+        "Mode solo et multijoueur",
+        "Intelligence artificielle",
+        "Défis et vérités",
+        "Mode Premium avec niveaux illimités"
+      ]
+    },
+    "math-match-memory": {
+      "tagline": "Apprends les maths en t'amusant",
+      "description": "Transforme les maths en jeu de mémoire amusant ! Parfait pour apprendre et réviser les tables de multiplication, addition, soustraction et division. Trois niveaux de difficulté pour progresser à son rythme.",
+      "category": "Éducation",
+      "features": [
+        "3 niveaux de difficulté",
+        "Multiplication, addition, soustraction, division",
+        "Suivi des progrès",
+        "Confidentialité garantie"
+      ]
+    }
+  },
+  "websites": {
+    "pytheas": {
+      "name": "Pythéas de Massalia",
+      "description": "Site historique et culturel dédié à Pythéas, explorateur marseillais du IVe siècle av. J.-C."
+    },
+    "ng-clim": {
+      "name": "NG Climatisation",
+      "description": "Site vitrine pour un professionnel de l'entretien et du nettoyage de climatisation dans les Alpes-Maritimes."
+    },
+    "julie-photo": {
+      "name": "Julie Montbeyre Photographie",
+      "description": "Portfolio d'une photographe professionnelle spécialisée en danse et moments de vie."
+    }
+  },
+  "appDetail": {
+    "back": "Retour",
+    "features": "Fonctionnalités",
+    "viewOnAppStore": "Voir sur l'App Store",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfUse": "Conditions d'utilisation",
+    "appNotFound": "Application non trouvée."
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "home": "Accueil"
+  }
+}
