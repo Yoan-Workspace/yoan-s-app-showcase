@@ -27,9 +27,9 @@ const skills = [
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = {
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 48 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, ease: easeOut as unknown as [number, number, number, number] },
+  transition: { duration: 1, ease: easeOut as unknown as [number, number, number, number] },
 };
 
 const Index = () => {
@@ -43,7 +43,7 @@ const Index = () => {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 section-pattern" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative container mx-auto px-6 py-24 md:py-40">
+        <div className="relative container mx-auto px-6 py-12 md:py-20">
           <div className="max-w-3xl">
             <motion.div {...fadeUp}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/8 text-primary text-sm font-medium mb-8">
@@ -54,7 +54,7 @@ const Index = () => {
 
             <motion.h1
               {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 0.1 }}
+              transition={{ ...fadeUp.transition, delay: 1 }}
               className="font-heading text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight"
             >
               {t("hero.greeting")}{" "}
@@ -63,7 +63,7 @@ const Index = () => {
 
             <motion.p
               {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 0.2 }}
+              transition={{ ...fadeUp.transition, delay: 1.2 }}
               className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
             >
               {t("hero.subtitle")}
@@ -71,7 +71,7 @@ const Index = () => {
 
             <motion.div
               {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 0.3 }}
+              transition={{ ...fadeUp.transition, delay: 1.3 }}
               className="mt-10 flex flex-wrap gap-3"
             >
               {skills.map((skill) => (
@@ -92,17 +92,15 @@ const Index = () => {
       <section className="border-y border-border bg-card/50">
         <div className="container mx-auto px-6 py-8">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: 1.3 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
             {[
               { value: "4", label: t("stats.apps") },
               { value: "3", label: t("stats.websites") },
               { value: "iOS", label: t("stats.platform") },
-              { value: "2025", label: t("stats.since") },
+              { value: "2020", label: t("stats.since") },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="font-heading text-2xl md:text-3xl font-bold text-gradient">{stat.value}</div>
@@ -116,10 +114,10 @@ const Index = () => {
       {/* Apps */}
       <section id="apps" className="container mx-auto px-6 py-20 md:py-28">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 260 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 1.5 }}
           className="max-w-2xl mb-12"
         >
           <span className="inline-flex items-center gap-2 text-primary text-sm font-semibold uppercase tracking-wider mb-3">
@@ -143,7 +141,7 @@ const Index = () => {
       <section id="sites" className="section-pattern">
         <div className="container mx-auto px-6 py-20 md:py-28">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 260 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
@@ -177,7 +175,7 @@ const Index = () => {
       {/* Contact CTA */}
       <section id="contact" className="container mx-auto px-6 py-20 md:py-28">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 200 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -193,7 +191,7 @@ const Index = () => {
             {t("contact.description")}
           </p>
           <a
-            href="mailto:contact@ysdev.fr"
+            href="mailto:yoansoussand@gmail.com"
             className="inline-flex items-center gap-2 mt-8 px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
           >
             {t("contact.cta")}
