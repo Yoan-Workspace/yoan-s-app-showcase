@@ -132,7 +132,7 @@ const Index = () => {
           <p className="mt-3 text-muted-foreground">{t("sections.appsDescription")}</p>
         </motion.div>
 
-        <div className="grid gap-4 md:grid-cols-2 max-w-4xl">
+        <div className="grid gap-4 md:grid-cols-2 max-w-4xl items-stretch">
           {apps.map((app, i) => (
             <AppCard key={app.id} app={app} index={i} />
           ))}
