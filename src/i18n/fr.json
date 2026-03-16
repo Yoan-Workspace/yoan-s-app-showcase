@@ -2,22 +2,46 @@
   "header": {
     "home": "Accueil",
     "apps": "Applications",
-    "websites": "Sites Web"
+    "websites": "Sites Web",
+    "contact": "Contact"
   },
   "hero": {
-    "badge": "Développeur iOS & Web",
-    "subtitle": "Développeur passionné, je crée des applications mobiles et des sites web intuitifs et performants."
+    "greeting": "Bonjour, je suis",
+    "badge": "Disponible en freelance",
+    "subtitle": "Développeur iOS & Web, je conçois des applications mobiles intuitives et des sites web modernes et performants.",
+    "skills": {
+      "ios": "Développement iOS",
+      "web": "Développement Web",
+      "swift": "Swift / SwiftUI",
+      "react": "React / TypeScript",
+      "performance": "Performance"
+    }
+  },
+  "stats": {
+    "apps": "Apps publiées",
+    "websites": "Projets Web",
+    "platform": "Plateforme principale",
+    "since": "Actif depuis"
   },
   "lastUpdated": "Dernière mise à jour",
   "sections": {
-    "myApps": "Mes",
-    "myAppsHighlight": "Applications",
-    "myWebsites": "Mes",
-    "myWebsitesHighlight": "Sites Web"
+    "appsLabel": "Mobile",
+    "myApps": "Apps sur l'",
+    "myAppsHighlight": "App Store",
+    "appsDescription": "Applications iOS natives, conçues avec soin pour la performance et le respect de la vie privée.",
+    "websitesLabel": "Web",
+    "myWebsites": "Sites que j'ai",
+    "myWebsitesHighlight": "Réalisés",
+    "websitesDescription": "Sites web sur mesure adaptés à l'identité de chaque client, optimisés pour la vitesse et la conversion."
+  },
+  "contact": {
+    "title": "Travaillons ensemble",
+    "description": "Vous avez un projet en tête ? J'adorerais en discuter. Parlons de comment je peux vous aider à le concrétiser.",
+    "cta": "Me contacter"
   },
   "terms": {
-  "leacDescription": "Les conditions d'utilisation de {{appName}} sont régies par le contrat de licence utilisateur final standard d'Apple (LECA). En téléchargeant et en utilisant cette application, vous acceptez les termes de ce contrat.",
-  "leacLink": "Consulter le contrat de licence Apple (LECA)"
+    "leacDescription": "Les conditions d'utilisation de {{appName}} sont régies par le contrat de licence utilisateur final standard d'Apple (LECA). En téléchargeant et en utilisant cette application, vous acceptez les termes de ce contrat.",
+    "leacLink": "Consulter le contrat de licence Apple (LECA)"
   },
   "apps": {
     "rappel-produit": {
@@ -31,62 +55,23 @@
         "Partage rapide des alertes"
       ],
       "privacy": {
-  "lastUpdated": "16 mars 2026",
-  "sections": [
-    {
-      "title": "1. Introduction",
-      "content": "Cette politique de confidentialité décrit comment Rappel Produit, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles. En utilisant l'application, vous acceptez les pratiques décrites dans cette politique."
-    },
-    {
-      "title": "2. Données collectées",
-      "content": "Rappel Produit ne crée pas de compte utilisateur et ne collecte pas de données personnelles identifiables. Les données collectées sont limitées aux identifiants publicitaires anonymes utilisés par Google AdMob pour la diffusion de publicités."
-    },
-    {
-      "title": "3. Données gouvernementales",
-      "content": "Les informations sur les rappels de produits proviennent exclusivement du site officiel gouvernemental rappel.conso.gouv.fr. Ces données sont publiques et Rappel Produit ne les stocke pas sur ses propres serveurs."
-    },
-    {
-      "title": "4. Publicités Google AdMob",
-      "content": "Rappel Produit est financée par la publicité via Google AdMob. Google AdMob peut collecter et utiliser des données pour diffuser des publicités personnalisées, notamment votre identifiant publicitaire (IDFA), des données de localisation approximative et des données d'utilisation anonymes. Ces données sont traitées conformément à la politique de confidentialité de Google : policies.google.com/privacy"
-    },
-    {
-      "title": "5. App Tracking Transparency (ATT)",
-      "content": "Conformément aux exigences d'Apple, Rappel Produit vous demandera l'autorisation de suivre votre activité via Google AdMob. Si vous refusez, des publicités non personnalisées vous seront affichées. Vous pouvez modifier votre choix depuis Réglages → Confidentialité → Suivi."
-    },
-    {
-      "title": "6. Consentement RGPD — Google AdMob",
-      "content": "Pour les utilisateurs de l'Espace Économique Européen, Rappel Produit utilise le SDK UMP de Google pour recueillir votre consentement conformément au RGPD avant toute collecte de données publicitaires."
-    },
-    {
-      "title": "7. Partage de données",
-      "content": "Nous ne vendons pas vos données personnelles à des tiers. Les seules données partagées sont les identifiants publicitaires anonymes transmis à Google AdMob dans le cadre de la diffusion publicitaire, sous réserve de votre consentement."
-    },
-    {
-      "title": "8. Services tiers",
-      "content": "Rappel Produit utilise Google AdMob (publicités) et l'API gouvernementale rappel.conso.gouv.fr (données de rappels). Ces services sont soumis à leurs propres politiques de confidentialité."
-    },
-    {
-      "title": "9. Sécurité",
-      "content": "Rappel Produit ne stocke aucune donnée personnelle sur ses propres serveurs. Les communications avec l'API gouvernementale sont effectuées via des connexions sécurisées HTTPS."
-    },
-    {
-      "title": "10. Vos droits (RGPD)",
-      "content": "Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement et d'opposition. Pour exercer vos droits concernant les données Google AdMob, visitez myaccount.google.com/data-and-privacy."
-    },
-    {
-      "title": "11. Enfants",
-      "content": "Rappel Produit n'est pas destinée aux enfants de moins de 13 ans en raison de la présence de publicités Google AdMob. Nous vous encourageons à configurer les restrictions parentales sur l'appareil."
-    },
-    {
-      "title": "12. Modifications",
-      "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité, notamment en cas de changement des conditions d'utilisation de Google AdMob."
-    },
-    {
-      "title": "13. Contact",
-      "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via la page de l'application sur l'App Store."
-    }
-  ]
-}
+        "lastUpdated": "16 mars 2026",
+        "sections": [
+          { "title": "1. Introduction", "content": "Cette politique de confidentialité décrit comment Rappel Produit, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles." },
+          { "title": "2. Données collectées", "content": "Rappel Produit ne crée pas de compte utilisateur et ne collecte pas de données personnelles identifiables." },
+          { "title": "3. Données gouvernementales", "content": "Les informations sur les rappels de produits proviennent exclusivement du site officiel gouvernemental rappel.conso.gouv.fr." },
+          { "title": "4. Publicités Google AdMob", "content": "Rappel Produit est financée par la publicité via Google AdMob." },
+          { "title": "5. App Tracking Transparency (ATT)", "content": "Conformément aux exigences d'Apple, Rappel Produit vous demandera l'autorisation de suivre votre activité via Google AdMob." },
+          { "title": "6. Consentement RGPD — Google AdMob", "content": "Pour les utilisateurs de l'Espace Économique Européen, Rappel Produit utilise le SDK UMP de Google pour recueillir votre consentement conformément au RGPD." },
+          { "title": "7. Partage de données", "content": "Nous ne vendons pas vos données personnelles à des tiers." },
+          { "title": "8. Services tiers", "content": "Rappel Produit utilise Google AdMob (publicités) et l'API gouvernementale rappel.conso.gouv.fr (données de rappels)." },
+          { "title": "9. Sécurité", "content": "Rappel Produit ne stocke aucune donnée personnelle sur ses propres serveurs." },
+          { "title": "10. Vos droits (RGPD)", "content": "Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement et d'opposition." },
+          { "title": "11. Enfants", "content": "Rappel Produit n'est pas destinée aux enfants de moins de 13 ans en raison de la présence de publicités Google AdMob." },
+          { "title": "12. Modifications", "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité." },
+          { "title": "13. Contact", "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via la page de l'application sur l'App Store." }
+        ]
+      }
     },
     "mysterypix": {
       "tagline": "Devinez le mot mystère",
@@ -99,58 +84,22 @@
         "Mode Premium avec niveaux illimités"
       ],
       "privacy": {
-  "lastUpdated": "16 mars 2026",
-  "sections": [
-    {
-      "title": "1. Introduction",
-      "content": "Cette politique de confidentialité décrit comment MysteryPix, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles. En utilisant l'application, vous acceptez les pratiques décrites dans cette politique."
-    },
-    {
-      "title": "2. Données collectées",
-      "content": "MysteryPix peut collecter certaines données dans le cadre de son fonctionnement, notamment via les publicités intégrées et les achats intégrés. Ces données peuvent inclure des identifiants publicitaires anonymes, des données de progression et des informations relatives aux achats effectués via l'App Store d'Apple."
-    },
-    {
-      "title": "3. Stockage local",
-      "content": "Les données de progression, scores et préférences de jeu sont stockés localement sur votre appareil. Ces données ne sont accessibles que par l'application et sont supprimées définitivement si vous désinstallez l'application."
-    },
-    {
-      "title": "4. Publicités",
-      "content": "MysteryPix intègre des publicités pour les utilisateurs de la version gratuite. Ces publicités sont diffusées via des réseaux publicitaires tiers qui peuvent collecter des données anonymes à des fins de ciblage publicitaire. Conformément à la politique ATT d'Apple, votre consentement explicite sera demandé avant toute collecte de données à des fins publicitaires."
-    },
-    {
-      "title": "5. App Tracking Transparency (ATT)",
-      "content": "Conformément aux exigences d'Apple, MysteryPix vous demandera l'autorisation de suivre votre activité. Si vous refusez, des publicités non personnalisées vous seront affichées. Votre choix n'affecte pas votre accès aux fonctionnalités. Vous pouvez modifier votre choix depuis Réglages → Confidentialité → Suivi."
-    },
-    {
-      "title": "6. Achats et abonnements",
-      "content": "MysteryPix propose un abonnement Premium pour supprimer les publicités et accéder à toutes les fonctionnalités. Les transactions sont entièrement gérées par Apple. Les abonnements se renouvellent automatiquement sauf résiliation au moins 24 heures avant la fin de la période en cours. Gérez votre abonnement depuis Réglages → Apple ID → Abonnements."
-    },
-    {
-      "title": "7. Services tiers",
-      "content": "MysteryPix peut intégrer des SDK tiers pour la diffusion de publicités, soumis à leurs propres politiques de confidentialité. Ces services peuvent collecter des données anonymes conformément à vos préférences ATT."
-    },
-    {
-      "title": "8. Partage de données",
-      "content": "Nous ne vendons pas vos données personnelles à des tiers. Les données anonymes collectées via les réseaux publicitaires sont utilisées uniquement à des fins de diffusion publicitaire."
-    },
-    {
-      "title": "9. Vos droits (RGPD)",
-      "content": "Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement et d'opposition. Vous pouvez réinitialiser votre identifiant publicitaire depuis Réglages → Confidentialité → Publicités Apple."
-    },
-    {
-      "title": "10. Enfants",
-      "content": "MysteryPix n'est pas destinée aux enfants de moins de 13 ans en raison de la présence de publicités. Nous vous encourageons à configurer les restrictions parentales sur l'appareil."
-    },
-    {
-      "title": "11. Modifications",
-      "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité. Les modifications importantes vous seront notifiées via une mise à jour de l'application."
-    },
-    {
-      "title": "12. Contact",
-      "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via la page de l'application sur l'App Store."
-    }
-  ]
-}
+        "lastUpdated": "16 mars 2026",
+        "sections": [
+          { "title": "1. Introduction", "content": "Cette politique de confidentialité décrit comment MysteryPix, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles." },
+          { "title": "2. Données collectées", "content": "MysteryPix peut collecter certaines données dans le cadre de son fonctionnement." },
+          { "title": "3. Stockage local", "content": "Les données de progression, scores et préférences de jeu sont stockés localement sur votre appareil." },
+          { "title": "4. Publicités", "content": "MysteryPix intègre des publicités pour les utilisateurs de la version gratuite." },
+          { "title": "5. App Tracking Transparency (ATT)", "content": "Conformément aux exigences d'Apple, MysteryPix vous demandera l'autorisation de suivre votre activité." },
+          { "title": "6. Achats et abonnements", "content": "MysteryPix propose un abonnement Premium pour supprimer les publicités et accéder à toutes les fonctionnalités." },
+          { "title": "7. Services tiers", "content": "MysteryPix peut intégrer des SDK tiers pour la diffusion de publicités." },
+          { "title": "8. Partage de données", "content": "Nous ne vendons pas vos données personnelles à des tiers." },
+          { "title": "9. Vos droits (RGPD)", "content": "Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement et d'opposition." },
+          { "title": "10. Enfants", "content": "MysteryPix n'est pas destinée aux enfants de moins de 13 ans en raison de la présence de publicités." },
+          { "title": "11. Modifications", "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité." },
+          { "title": "12. Contact", "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via la page de l'application sur l'App Store." }
+        ]
+      }
     },
     "math-match-memory": {
       "tagline": "Apprends les maths en t'amusant",
@@ -163,115 +112,49 @@
         "Confidentialité garantie"
       ],
       "privacy": {
-  "lastUpdated": "16 mars 2026",
-  "sections": [
-    {
-      "title": "1. Introduction",
-      "content": "Cette politique de confidentialité décrit comment Math-Match Memory, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles."
-    },
-    {
-      "title": "2. Données collectées",
-      "content": "Math-Match Memory ne collecte aucune donnée personnelle identifiable. Toutes les données (scores, progression, niveaux complétés) sont stockées uniquement localement sur votre appareil via SwiftData. Aucune donnée n'est transmise à des serveurs externes."
-    },
-    {
-      "title": "3. Stockage local",
-      "content": "L'application utilise SwiftData, la technologie de stockage native d'Apple, pour sauvegarder vos données de progression. Ces données restent exclusivement sur votre appareil et sont supprimées définitivement si vous désinstallez l'application."
-    },
-    {
-      "title": "4. Achats intégrés",
-      "content": "Math-Match Memory propose un achat unique via l'App Store d'Apple pour débloquer l'accès complet. Les transactions sont entièrement gérées par Apple. Nous ne collectons ni ne stockons aucune information de paiement."
-    },
-    {
-      "title": "5. Publicité et tracking",
-      "content": "Math-Match Memory ne contient aucune publicité et n'utilise aucun outil de tracking, d'analyse ou de collecte de données comportementales. Votre utilisation de l'application reste entièrement privée."
-    },
-    {
-      "title": "6. Services tiers",
-      "content": "Math-Match Memory utilise uniquement les frameworks natifs d'Apple (SwiftData, StoreKit). Aucun SDK tiers n'est intégré dans l'application."
-    },
-    {
-      "title": "7. Enfants et COPPA",
-      "content": "Math-Match Memory est une application éducative destinée à tous les âges, y compris les enfants. L'application ne collecte aucune donnée personnelle, ne contient aucune publicité et ne propose aucune interaction sociale. Elle est conforme aux exigences de la loi COPPA."
-    },
-    {
-      "title": "8. Sécurité",
-      "content": "Vos données sont stockées uniquement sur votre appareil local. Nous ne collectons aucune donnée personnelle, ce qui élimine tout risque de violation de données de notre côté."
-    },
-    {
-      "title": "9. Vos droits",
-      "content": "Vous pouvez supprimer toutes vos données à tout moment en désinstallant l'application. Vos données de progression seront définitivement supprimées de votre appareil."
-    },
-    {
-      "title": "10. Modifications",
-      "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité. Toute modification sera reflétée par une nouvelle date de mise à jour en haut de cette page."
-    },
-    {
-      "title": "11. Contact",
-      "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via la page de l'application sur l'App Store."
-    }
-  ]
-  }
+        "lastUpdated": "16 mars 2026",
+        "sections": [
+          { "title": "1. Introduction", "content": "Cette politique de confidentialité décrit comment Math-Match Memory, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles." },
+          { "title": "2. Données collectées", "content": "Math-Match Memory ne collecte aucune donnée personnelle identifiable." },
+          { "title": "3. Stockage local", "content": "L'application utilise SwiftData, la technologie de stockage native d'Apple." },
+          { "title": "4. Achats intégrés", "content": "Math-Match Memory propose un achat unique via l'App Store d'Apple." },
+          { "title": "5. Publicité et tracking", "content": "Math-Match Memory ne contient aucune publicité et n'utilise aucun outil de tracking." },
+          { "title": "6. Services tiers", "content": "Math-Match Memory utilise uniquement les frameworks natifs d'Apple." },
+          { "title": "7. Enfants et COPPA", "content": "Math-Match Memory est une application éducative destinée à tous les âges. Elle est conforme à la loi COPPA." },
+          { "title": "8. Sécurité", "content": "Vos données sont stockées uniquement sur votre appareil local." },
+          { "title": "9. Vos droits", "content": "Vous pouvez supprimer toutes vos données à tout moment en désinstallant l'application." },
+          { "title": "10. Modifications", "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité." },
+          { "title": "11. Contact", "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via la page de l'application sur l'App Store." }
+        ]
+      }
     },
     "allfaves": {
-  "tagline": "Sauvegardez ce qui vous inspire, retrouvez-le en secondes",
-  "description": "Arrêtez de perdre vos posts favoris. Sauvegardez n'importe quel post, article ou lien depuis Instagram, TikTok, LinkedIn ou n'importe quel site web en un tap — et retrouvez-le instantanément. Organisez avec des catégories personnalisées, filtrez par plateforme et partagez des collections avec vos amis. Vos favoris, enfin sous contrôle.",
-  "category": "Productivité",
-  "features": [
-    "Sauvegarde depuis n'importe quelle app via l'extension de partage",
-    "Catégories personnalisées avec icônes et couleurs",
-    "Partage de collections avec vos amis",
-    "Synchronisation iCloud sur tous vos appareils"
-  ],
-  "privacy": {
-  "lastUpdated": "16 mars 2026",
-  "sections": [
-    {
-      "title": "1. Introduction",
-      "content": "Cette politique de confidentialité décrit comment AllFaves, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles."
-    },
-    {
-      "title": "2. Données collectées",
-      "content": "AllFaves ne collecte aucune donnée personnelle identifiable. Les posts, catégories et favoris que vous sauvegardez restent stockés localement sur votre appareil et synchronisés uniquement via votre compte iCloud personnel. Nous n'avons aucun accès à vos données iCloud."
-    },
-    {
-      "title": "3. iCloud et synchronisation",
-      "content": "AllFaves utilise iCloud pour synchroniser vos données entre vos appareils Apple. Ces données sont stockées dans votre espace iCloud privé et sont régies par la politique de confidentialité d'Apple. Nous n'avons aucun accès à vos données synchronisées."
-    },
-    {
-      "title": "4. CloudKit — Partage de posts",
-      "content": "Lorsque vous utilisez la fonctionnalité de partage, les posts sélectionnés sont temporairement stockés dans la base de données publique CloudKit d'Apple pendant 24 heures, le temps que votre destinataire les importe. Ces données sont supprimées automatiquement après expiration. Seuls les posts explicitement partagés par vous sont concernés."
-    },
-    {
-      "title": "5. Achats intégrés",
-      "content": "AllFaves propose un achat unique Premium via l'App Store d'Apple. Les transactions sont entièrement gérées par Apple. Nous ne collectons ni ne stockons aucune information de paiement."
-    },
-    {
-      "title": "6. Publicité et tracking",
-      "content": "AllFaves ne contient aucune publicité et n'utilise aucun outil de tracking, d'analyse ou de collecte de données comportementales. Votre utilisation de l'application reste entièrement privée."
-    },
-    {
-      "title": "7. Services tiers",
-      "content": "AllFaves utilise LinkPresentation d'Apple pour récupérer les métadonnées et images des liens sauvegardés. Cette opération est effectuée directement depuis votre appareil sans passer par nos serveurs. Aucun SDK tiers n'est intégré dans l'application."
-    },
-    {
-      "title": "8. Sécurité",
-      "content": "Vos données sont stockées localement sur votre appareil et dans votre espace iCloud privé. Nous ne collectons pas de données personnelles, ce qui minimise tout risque de violation de données de notre côté."
-    },
-    {
-      "title": "9. Vos droits",
-      "content": "Vous pouvez à tout moment supprimer toutes vos données en désinstallant l'application et en supprimant les données AllFaves depuis Réglages → iCloud → Gérer le stockage."
-    },
-    {
-      "title": "10. Modifications",
-      "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité. Toute modification sera reflétée par une nouvelle date de mise à jour en haut de cette page."
-    },
-    {
-      "title": "11. Contact",
-      "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via l'application : À propos → Nous contacter."
+      "tagline": "Sauvegardez ce qui vous inspire, retrouvez-le en secondes",
+      "description": "Arrêtez de perdre vos posts favoris. Sauvegardez n'importe quel post, article ou lien depuis Instagram, TikTok, LinkedIn ou n'importe quel site web en un tap — et retrouvez-le instantanément.",
+      "category": "Productivité",
+      "features": [
+        "Sauvegarde depuis n'importe quelle app via l'extension de partage",
+        "Catégories personnalisées avec icônes et couleurs",
+        "Partage de collections avec vos amis",
+        "Synchronisation iCloud sur tous vos appareils"
+      ],
+      "privacy": {
+        "lastUpdated": "16 mars 2026",
+        "sections": [
+          { "title": "1. Introduction", "content": "Cette politique de confidentialité décrit comment AllFaves, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles." },
+          { "title": "2. Données collectées", "content": "AllFaves ne collecte aucune donnée personnelle identifiable." },
+          { "title": "3. iCloud et synchronisation", "content": "AllFaves utilise iCloud pour synchroniser vos données entre vos appareils Apple." },
+          { "title": "4. CloudKit — Partage de posts", "content": "Lorsque vous utilisez la fonctionnalité de partage, les posts sélectionnés sont temporairement stockés dans la base de données publique CloudKit d'Apple pendant 24 heures." },
+          { "title": "5. Achats intégrés", "content": "AllFaves propose un achat unique Premium via l'App Store d'Apple." },
+          { "title": "6. Publicité et tracking", "content": "AllFaves ne contient aucune publicité et n'utilise aucun outil de tracking." },
+          { "title": "7. Services tiers", "content": "AllFaves utilise LinkPresentation d'Apple pour récupérer les métadonnées des liens sauvegardés." },
+          { "title": "8. Sécurité", "content": "Vos données sont stockées localement sur votre appareil et dans votre espace iCloud privé." },
+          { "title": "9. Vos droits", "content": "Vous pouvez à tout moment supprimer toutes vos données en désinstallant l'application." },
+          { "title": "10. Modifications", "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité." },
+          { "title": "11. Contact", "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via l'application : À propos → Nous contacter." }
+        ]
+      }
     }
-  ]
-}
-}
   },
   "websites": {
     "pytheas": {
@@ -280,7 +163,7 @@
     },
     "ng-clim": {
       "name": "NG Climatisation",
-      "description": "Site vitrine pour un professionnel de l'entretien et du nettoyage de climatisation dans les Alpes-Maritimes."
+      "description": "Site vitrine pour un professionnel de l'entretien de climatisation dans les Alpes-Maritimes."
     },
     "julie-photo": {
       "name": "Julie Montbeyre Photographie",
@@ -299,5 +182,4 @@
     "rights": "Tous droits réservés.",
     "home": "Accueil"
   }
-  
 }
