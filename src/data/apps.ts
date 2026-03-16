@@ -1,6 +1,7 @@
 import rappelIcon from "@/assets/rappel-produit-icon.png";
 import mysteryIcon from "@/assets/mysterypix-icon.png";
 import mathIcon from "@/assets/math-match-icon.png";
+import allFavesIcon from "@assets/Allfaves-icon.png"
 import { AppData } from "./types";
 
 export const apps: AppData[] = [
@@ -55,4 +56,21 @@ export const apps: AppData[] = [
       "Confidentialité garantie",
     ],
   },
+  {
+  id: "allfaves",
+  name: "AllFaves",
+  tagline: "Sauvegardez ce qui vous inspire, retrouvez-le en quelques secondes",
+  description:
+    "Arrêtez de perdre vos posts favoris. Sauvegardez n'importe quel post, article ou lien depuis Instagram, TikTok, LinkedIn ou n'importe quel site web en un tap — et retrouvez-le instantanément. Organisez avec des catégories personnalisées, filtrez par plateforme et partagez des collections avec vos amis. Vos favoris, enfin sous contrôle.",
+  category: "Productivité",
+  icon: allFavesIcon,
+  appStoreUrl:
+    "https://apps.apple.com/app/allfaves/id6760546463",
+  features: [
+    "Sauvegarde depuis n'importe quelle app via l'extension de partage",
+    "Catégories personnalisées avec icônes et couleurs",
+    "Partage de collections avec vos amis",
+    "Synchronisation iCloud sur tous vos appareils",
+  ],
+},
 ];
