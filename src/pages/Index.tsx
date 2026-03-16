@@ -24,10 +24,12 @@ const skills = [
   { icon: Zap, labelKey: "hero.skills.performance" },
 ];
 
+const easeOut = [0.22, 1, 0.36, 1] as const;
+
 const fadeUp = {
   initial: { opacity: 0, y: 32 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.7, ease: easeOut as unknown as [number, number, number, number] },
 };
 
 const Index = () => {
