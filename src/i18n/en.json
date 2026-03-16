@@ -1,0 +1,78 @@
+{
+  "header": {
+    "home": "Home",
+    "apps": "Apps",
+    "websites": "Websites"
+  },
+  "hero": {
+    "badge": "iOS & Web Developer",
+    "subtitle": "Passionate developer, I create intuitive and high-performance mobile apps and websites."
+  },
+  "sections": {
+    "myApps": "My",
+    "myAppsHighlight": "Apps",
+    "myWebsites": "My",
+    "myWebsitesHighlight": "Websites"
+  },
+  "apps": {
+    "rappel-produit": {
+      "tagline": "Check product recalls in an instant",
+      "description": "Stay informed for safe consumption. Scan a product, search by name or category, and instantly find out if it's subject to an official recall. Protect your loved ones by sharing the info in one click! All data comes from the official government website rappel.conso.gouv.fr.",
+      "category": "Shopping",
+      "features": [
+        "Barcode scanning",
+        "Search by name or category",
+        "Official government data",
+        "Quick alert sharing"
+      ]
+    },
+    "mysterypix": {
+      "tagline": "Guess the mystery word",
+      "description": "The perfect game to spice up your evenings with friends or family! Choose a mysterious image, guess the hidden word and launch dares or truths. Play solo, multiplayer or with AI.",
+      "category": "Board Games",
+      "features": [
+        "Solo and multiplayer mode",
+        "Artificial intelligence",
+        "Dares and truths",
+        "Premium mode with unlimited levels"
+      ]
+    },
+    "math-match-memory": {
+      "tagline": "Learn math while having fun",
+      "description": "Turn math into a fun memory game! Perfect for learning and practicing multiplication, addition, subtraction and division tables. Three difficulty levels to progress at your own pace.",
+      "category": "Education",
+      "features": [
+        "3 difficulty levels",
+        "Multiplication, addition, subtraction, division",
+        "Progress tracking",
+        "Guaranteed privacy"
+      ]
+    }
+  },
+  "websites": {
+    "pytheas": {
+      "name": "Pytheas of Massalia",
+      "description": "Historical and cultural website dedicated to Pytheas, a Marseille explorer from the 4th century BC."
+    },
+    "ng-clim": {
+      "name": "NG Climatisation",
+      "description": "Showcase website for an air conditioning maintenance and cleaning professional in the Alpes-Maritimes."
+    },
+    "julie-photo": {
+      "name": "Julie Montbeyre Photography",
+      "description": "Portfolio of a professional photographer specializing in dance and life moments."
+    }
+  },
+  "appDetail": {
+    "back": "Back",
+    "features": "Features",
+    "viewOnAppStore": "View on the App Store",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "appNotFound": "Application not found."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "home": "Home"
+  }
+}
