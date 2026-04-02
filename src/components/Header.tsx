@@ -74,9 +74,9 @@ const Header = () => {
           {navLinks}
           <button
             onClick={toggleLang}
-            className="text-xs font-semibold px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
+            className="text-sm font-bold px-4 py-1.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-all"
           >
-            {i18n.language === "en" ? "FR" : "EN"}
+            🌐 {i18n.language === "en" ? "FR" : "EN"}
           </button>
         </nav>
 
