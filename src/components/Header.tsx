@@ -74,7 +74,7 @@ const Header = () => {
           {navLinks}
           <button
             onClick={toggleLang}
-            className="text-sm font-bold px-4 py-1.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-all"
+            className="text-sm font-bold px-4 py-1.5 rounded-full text-primary-foreground shadow-md transition-all bg-[#465ee7]"
           >
             🌐 {i18n.language === "en" ? "FR" : "EN"}
           </button>
@@ -84,7 +84,7 @@ const Header = () => {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={toggleLang}
-            className="text-sm font-bold px-4 py-1.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-all"
+            className="text-sm font-bold px-4 py-1.5 rounded-full text-primary-foreground shadow-md transition-all bg-[#465ee7]"
           >
             🌐 {i18n.language === "en" ? "FR" : "EN"}
           </button>
