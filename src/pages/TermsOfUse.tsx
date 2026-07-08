@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { apps } from "@/data/apps";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -24,9 +25,14 @@ const TermsOfUse = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title={t("seo.termsTitle", { name: app.name })}
+        description={t("seo.termsDescription", { name: app.name })}
+        path={`/app/${app.id}/terms`}
+      />
       <Header />
 
-      <main className="container mx-auto px-6 py-12 max-w-3xl flex-1">
+      <main id="main-content" className="container mx-auto px-6 py-12 max-w-3xl flex-1">
         <Link
           to={`/app/${app.id}`}
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
@@ -43,7 +49,7 @@ const TermsOfUse = () => {
         <div className="space-y-6 text-muted-foreground">
           <p>{t("terms.leacDescription", { appName: app.name })}</p>
 
-          <a  // ← balise manquante
+          <a
             href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
             target="_blank"
             rel="noopener noreferrer"

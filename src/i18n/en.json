@@ -24,6 +24,17 @@
     "since": "Active Since"
   },
   "lastUpdated": "Last updated",
+  "seo": {
+    "homeTitle": "Yoan Soussand — Freelance iOS & Web Developer",
+    "homeDescription": "Freelance iOS & Web developer. Swift/SwiftUI mobile apps on the App Store and modern, fast, custom-built React websites.",
+    "appTitle": "{{name}} — {{category}} | Yoan Soussand",
+    "privacyTitle": "Privacy Policy — {{name}} | Yoan Soussand",
+    "privacyDescription": "Privacy policy for the {{name}} app developed by Yoan Soussand.",
+    "termsTitle": "Terms of Use — {{name}} | Yoan Soussand",
+    "termsDescription": "Terms of use for the {{name}} app developed by Yoan Soussand.",
+    "notFoundTitle": "Page not found (404) | Yoan Soussand",
+    "notFoundDescription": "The page you are looking for does not exist or has been moved."
+  },
   "sections": {
     "appsLabel": "Mobile",
     "myApps": "Apps on the",
@@ -55,21 +66,24 @@
         "Quick alert sharing"
       ],
       "privacy": {
-        "lastUpdated": "March 16, 2026",
+        "lastUpdated": "July 8, 2026",
         "sections": [
           { "title": "1. Introduction", "content": "This privacy policy describes how Rappel Produit, developed by Yoan Soussand, collects, uses and protects your personal information. By using the application, you agree to the practices described in this policy." },
-          { "title": "2. Data collected", "content": "Rappel Produit does not create user accounts and does not collect personally identifiable data. Data collected is limited to anonymous advertising identifiers used by Google AdMob for advertising delivery." },
+          { "title": "2. Data collected", "content": "Rappel Produit does not create user accounts and does not sell your personal data. The application collects anonymous usage data via Firebase Analytics (see section 15) and, if you have not purchased premium, advertising identifiers via Google AdMob (see sections 4 to 6). The camera is used solely for barcode scanning: no images are stored. Your preferences, last visit date and watchlist are stored locally on your device." },
           { "title": "3. Government data", "content": "Product recall information comes exclusively from the official French government website rappel.conso.gouv.fr. This data is public and Rappel Produit does not store it on its own servers." },
-          { "title": "4. Google AdMob advertising", "content": "Rappel Produit is funded through advertising via Google AdMob. Google AdMob may collect and use data to serve personalized ads, including your advertising identifier (IDFA), approximate location data and anonymous usage data. This data is processed in accordance with Google's privacy policy: policies.google.com/privacy" },
+          { "title": "4. Google AdMob advertising", "content": "Rappel Produit is funded through advertising via Google AdMob. Ads are disabled if you have purchased premium (see section 14). Google AdMob may collect and use data to serve personalized ads, including your advertising identifier (IDFA), approximate location data and anonymous usage data. This data is processed in accordance with Google's privacy policy: policies.google.com/privacy" },
           { "title": "5. App Tracking Transparency (ATT)", "content": "In accordance with Apple's requirements, Rappel Produit will ask for permission to track your activity via Google AdMob. If you decline, non-personalized ads will be shown. You can change your choice from Settings → Privacy → Tracking." },
           { "title": "6. GDPR consent — Google AdMob", "content": "For users in the European Economic Area, Rappel Produit uses Google's UMP SDK to collect your consent in accordance with GDPR before any advertising data collection." },
           { "title": "7. Data sharing", "content": "We do not sell your personal data to third parties. The only data shared are anonymous advertising identifiers transmitted to Google AdMob for advertising delivery, subject to your consent." },
-          { "title": "8. Third-party services", "content": "Rappel Produit uses Google AdMob (advertising) and the official government API rappel.conso.gouv.fr (recall data). These services are subject to their own privacy policies." },
-          { "title": "9. Security", "content": "Rappel Produit does not store any personal data on its own servers. Communications with the government API are made via secure HTTPS connections." },
+          { "title": "8. Third-party services", "content": "Rappel Produit uses Google AdMob (advertising, if not premium), Firebase Analytics (anonymous usage analytics), the official government API rappel.conso.gouv.fr (recall data) and the iTunes API (update check). These services are subject to their own privacy policies." },
+          { "title": "9. Security", "content": "Rappel Produit does not store any personal data on its own servers. However, certain data (preferences, watchlist, last visit date) is stored locally on your device via iOS storage (UserDefaults). Communications with the government API and update checks (iTunes API) are made via secure HTTPS connections." },
           { "title": "10. Your rights (GDPR)", "content": "In accordance with GDPR, you have the rights of access, rectification, erasure and objection. To exercise your rights regarding Google AdMob data, visit myaccount.google.com/data-and-privacy." },
           { "title": "11. Children", "content": "Rappel Produit is not intended for children under 13 years of age due to the presence of Google AdMob advertising. We encourage you to configure parental controls on the device." },
           { "title": "12. Changes", "content": "We reserve the right to update this privacy policy, particularly in the event of changes to Google AdMob's terms of use." },
-          { "title": "13. Contact", "content": "For any questions regarding this privacy policy, contact us through the application page on the App Store." }
+          { "title": "13. Contact", "content": "For any questions regarding this privacy policy, contact us at yoansoussand@gmail.com or through the application page on the App Store." },
+          { "title": "14. In-app purchases", "content": "Rappel Produit offers an optional one-time purchase through the Apple App Store to remove ads and support the project. The purchase identifier is com.yoansoussand.rappelproduit.premium (€2.99). Payment is entirely handled by Apple. No payment data is collected by the application. No account is created. The purchase can be restored on another device via \"Restore Purchase\". All features remain available for free." },
+          { "title": "15. Usage analytics (Firebase Analytics)", "content": "The application uses Firebase Analytics (Google) to measure usage anonymously: screens visited, sessions, searches, scans and interactions. This data does not allow you to be personally identified. Google policy: policies.google.com/privacy" },
+          { "title": "16. Notifications and watchlist", "content": "You can enable local notifications: weekly reminders (Monday to Friday at 6:30 PM) and alerts when your watched products are subject to a new recall. These notifications are managed entirely by iOS, with no server involved. The brands, products and barcodes you watch are stored only on your device. The application may check for new recalls in the background via iOS mechanisms (BGAppRefresh); iOS decides when to run, with no fixed schedule guaranteed." }
         ]
       }
     },
@@ -181,5 +195,16 @@
   "footer": {
     "rights": "All rights reserved.",
     "home": "Home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "toggleLanguage": "Change language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   }
 }

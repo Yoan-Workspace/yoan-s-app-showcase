@@ -1,0 +1,13 @@
+{
+  "name": "Yoan Soussand — Développeur iOS & Web",
+  "short_name": "Yoan Soussand",
+  "description": "Applications iOS et sites web modernes par Yoan Soussand, développeur freelance.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#465ee7",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ]
+}

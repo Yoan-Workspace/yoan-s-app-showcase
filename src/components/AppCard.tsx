@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { AppData } from "@/data/types";
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { EASE_OUT } from "@/lib/motion";
 
 interface AppCardProps {
   app: AppData;
@@ -14,10 +15,10 @@ const AppCard = ({ app, index = 0 }: AppCardProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 260 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 1.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: EASE_OUT }}
       className="h-full"
     >
       <Link
@@ -26,7 +27,11 @@ const AppCard = ({ app, index = 0 }: AppCardProps) => {
       >
         <img
           src={app.icon}
-          alt={app.name}
+          alt={`Icône de l'application ${app.name}`}
+          width={64}
+          height={64}
+          loading="lazy"
+          decoding="async"
           className="w-16 h-16 rounded-xl shadow-md flex-shrink-0 group-hover:shadow-lg transition-shadow duration-300"
         />
        <div className="flex-1 min-w-0 flex flex-col justify-between">

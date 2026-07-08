@@ -24,6 +24,17 @@
     "since": "Actif depuis"
   },
   "lastUpdated": "Dernière mise à jour",
+  "seo": {
+    "homeTitle": "Yoan Soussand — Développeur iOS & Web freelance",
+    "homeDescription": "Développeur iOS & Web freelance. Applications mobiles Swift/SwiftUI sur l'App Store et sites web React modernes, rapides et sur mesure.",
+    "appTitle": "{{name}} — {{category}} | Yoan Soussand",
+    "privacyTitle": "Politique de confidentialité — {{name}} | Yoan Soussand",
+    "privacyDescription": "Politique de confidentialité de l'application {{name}} développée par Yoan Soussand.",
+    "termsTitle": "Conditions d'utilisation — {{name}} | Yoan Soussand",
+    "termsDescription": "Conditions d'utilisation de l'application {{name}} développée par Yoan Soussand.",
+    "notFoundTitle": "Page introuvable (404) | Yoan Soussand",
+    "notFoundDescription": "La page que vous recherchez n'existe pas ou a été déplacée."
+  },
   "sections": {
     "appsLabel": "Mobile",
     "myApps": "Apps sur l'",
@@ -55,21 +66,24 @@
         "Partage rapide des alertes"
       ],
       "privacy": {
-        "lastUpdated": "16 mars 2026",
+        "lastUpdated": "8 juillet 2026",
         "sections": [
           { "title": "1. Introduction", "content": "Cette politique de confidentialité décrit comment Rappel Produit, développée par Yoan Soussand, collecte, utilise et protège vos informations personnelles." },
-          { "title": "2. Données collectées", "content": "Rappel Produit ne crée pas de compte utilisateur et ne collecte pas de données personnelles identifiables." },
+          { "title": "2. Données collectées", "content": "Rappel Produit ne crée pas de compte utilisateur et ne vend pas vos données personnelles. L'application collecte des données d'usage anonymes via Firebase Analytics (voir section 15) et, si vous n'avez pas souscrit au premium, des identifiants publicitaires via Google AdMob (voir sections 4 à 6). L'appareil photo est utilisée uniquement pour scanner les codes-barres : aucune image n'est enregistrée. Vos préférences, la date de dernière visite et la liste de vos surveillances sont stockées localement sur votre appareil." },
           { "title": "3. Données gouvernementales", "content": "Les informations sur les rappels de produits proviennent exclusivement du site officiel gouvernemental rappel.conso.gouv.fr." },
-          { "title": "4. Publicités Google AdMob", "content": "Rappel Produit est financée par la publicité via Google AdMob." },
+          { "title": "4. Publicités Google AdMob", "content": "Rappel Produit est financée par la publicité via Google AdMob. Les publicités sont désactivées si vous avez souscrit à l'achat premium (voir section 14)." },
           { "title": "5. App Tracking Transparency (ATT)", "content": "Conformément aux exigences d'Apple, Rappel Produit vous demandera l'autorisation de suivre votre activité via Google AdMob." },
           { "title": "6. Consentement RGPD — Google AdMob", "content": "Pour les utilisateurs de l'Espace Économique Européen, Rappel Produit utilise le SDK UMP de Google pour recueillir votre consentement conformément au RGPD." },
           { "title": "7. Partage de données", "content": "Nous ne vendons pas vos données personnelles à des tiers." },
-          { "title": "8. Services tiers", "content": "Rappel Produit utilise Google AdMob (publicités) et l'API gouvernementale rappel.conso.gouv.fr (données de rappels)." },
-          { "title": "9. Sécurité", "content": "Rappel Produit ne stocke aucune donnée personnelle sur ses propres serveurs." },
+          { "title": "8. Services tiers", "content": "Rappel Produit utilise Google AdMob (publicités, si non premium), Firebase Analytics (analyse d'usage anonyme), l'API gouvernementale rappel.conso.gouv.fr (données de rappels) et l'API iTunes (vérification de mise à jour). Ces services sont soumis à leurs propres politiques de confidentialité." },
+          { "title": "9. Sécurité", "content": "Rappel Produit ne stocke aucune donnée personnelle sur ses propres serveurs. En revanche, certaines données (préférences, surveillances, date de dernière visite) sont conservées localement sur votre appareil via le stockage iOS (UserDefaults). Les communications avec l'API gouvernementale et la vérification de mise à jour (API iTunes) s'effectuent via des connexions HTTPS sécurisées." },
           { "title": "10. Vos droits (RGPD)", "content": "Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement et d'opposition." },
           { "title": "11. Enfants", "content": "Rappel Produit n'est pas destinée aux enfants de moins de 13 ans en raison de la présence de publicités Google AdMob." },
           { "title": "12. Modifications", "content": "Nous nous réservons le droit de mettre à jour cette politique de confidentialité." },
-          { "title": "13. Contact", "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous via la page de l'application sur l'App Store." }
+          { "title": "13. Contact", "content": "Pour toute question concernant cette politique de confidentialité, contactez-nous à yoansoussand@gmail.com ou via la page de l'application sur l'App Store." },
+          { "title": "14. Achats intégrés", "content": "Rappel Produit propose un achat unique optionnel via l'App Store d'Apple pour supprimer les publicités et soutenir le projet. L'identifiant de l'achat est com.yoansoussand.rappelproduit.premium (2,99 €). Le paiement est entièrement géré par Apple. Aucune donnée bancaire n'est collectée par l'application. Aucun compte n'est créé. L'achat peut être restauré sur un autre appareil via « Restaurer un achat ». Toutes les fonctionnalités restent accessibles gratuitement." },
+          { "title": "15. Analyse d'usage (Firebase Analytics)", "content": "L'application utilise Firebase Analytics (Google) pour mesurer l'utilisation de manière anonyme : écrans visités, sessions, recherches, scans et interactions. Ces données ne permettent pas de vous identifier personnellement. Politique Google : policies.google.com/privacy" },
+          { "title": "16. Notifications et surveillances", "content": "Vous pouvez activer des notifications locales : rappels hebdomadaires (lundi à vendredi à 18h30) et alertes lorsque vos produits surveillés font l'objet d'un nouveau rappel. Ces notifications sont gérées entièrement par iOS, sans passer par un serveur. Les marques, produits et codes-barres que vous surveillez sont stockés uniquement sur votre appareil. L'application peut vérifier les nouveaux rappels en arrière-plan via les mécanismes iOS (BGAppRefresh) ; iOS décide du moment d'exécution, sans garantie d'horaire fixe." }
         ]
       }
     },
@@ -181,5 +195,16 @@
   "footer": {
     "rights": "Tous droits réservés.",
     "home": "Accueil"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
+  },
+  "a11y": {
+    "skipToContent": "Aller au contenu principal",
+    "toggleLanguage": "Changer de langue",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
   }
 }

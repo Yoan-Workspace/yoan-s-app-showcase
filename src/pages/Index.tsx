@@ -4,11 +4,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AppCard from "@/components/AppCard";
 import WebsiteCard from "@/components/WebsiteCard";
+import Seo from "@/components/Seo";
 import { apps } from "@/data/apps";
-import sitePytheas from "@/assets/site-pytheas.png";
-import siteNgClim from "@/assets/site-ng-clim.png";
-import siteJuliePhoto from "@/assets/site-julie-photo.png";
+import sitePytheas from "@/assets/site-pytheas.jpg";
+import siteNgClim from "@/assets/site-ng-clim.jpg";
+import siteJuliePhoto from "@/assets/site-julie-photo.jpg";
 import { Smartphone, Globe, Code2, Layers, Zap, Mail, ArrowRight } from "lucide-react";
+import { EASE_OUT, revealUp, baseTransition } from "@/lib/motion";
 
 const websiteKeys = [
   { key: "pytheas", url: "https://www.marseille-pytheas.eu/", screenshot: sitePytheas },
@@ -24,12 +26,18 @@ const skills = [
   { icon: Zap, labelKey: "hero.skills.performance" },
 ];
 
-const easeOut = [0.22, 1, 0.36, 1] as const;
-
-const fadeUp = {
-  initial: { opacity: 0, y: 48 },
+const hero = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 1, ease: easeOut as unknown as [number, number, number, number] },
+  transition: { duration: 0.55, ease: EASE_OUT, delay },
+});
+
+const revealSection = {
+  variants: revealUp,
+  initial: "hidden" as const,
+  whileInView: "show" as const,
+  viewport: { once: true, margin: "-80px" },
+  transition: baseTransition,
 };
 
 const Index = () => {
@@ -37,15 +45,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title={t("seo.homeTitle")}
+        description={t("seo.homeDescription")}
+        path="/"
+      />
       <Header />
 
+      <main id="main-content">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 section-pattern" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
         <div className="relative container mx-auto px-6 py-12 md:py-20">
           <div className="max-w-3xl">
-            <motion.div {...fadeUp}>
+            <motion.div {...hero(0)}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/8 text-primary text-sm font-medium mb-8">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                 {t("hero.badge")}
@@ -53,8 +67,7 @@ const Index = () => {
             </motion.div>
 
             <motion.h1
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 1 }}
+              {...hero(0.08)}
               className="font-heading text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight"
             >
               {t("hero.greeting")}{" "}
@@ -62,16 +75,14 @@ const Index = () => {
             </motion.h1>
 
             <motion.p
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 1.2 }}
+              {...hero(0.16)}
               className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
             >
               {t("hero.subtitle")}
             </motion.p>
 
             <motion.div
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 1.3 }}
+              {...hero(0.24)}
               className="mt-10 flex flex-wrap gap-3"
             >
               {skills.map((skill) => (
@@ -92,8 +103,7 @@ const Index = () => {
       <section className="border-y border-border bg-card/50">
         <div className="container mx-auto px-6 py-8">
           <motion.div
-            {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 1.3 }}
+            {...revealSection}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
             {[
@@ -113,13 +123,7 @@ const Index = () => {
 
       {/* Apps */}
       <section id="apps" className="container mx-auto px-6 py-20 md:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 260 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5 }}
-          className="max-w-2xl mb-12"
-        >
+        <motion.div {...revealSection} className="max-w-2xl mb-12">
           <span className="inline-flex items-center gap-2 text-primary text-sm font-semibold uppercase tracking-wider mb-3">
             <Smartphone className="w-4 h-4" />
             {t("sections.appsLabel")}
@@ -140,13 +144,7 @@ const Index = () => {
       {/* Websites */}
       <section id="sites" className="section-pattern">
         <div className="container mx-auto px-6 py-20 md:py-28">
-          <motion.div
-            initial={{ opacity: 0, y: 260 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl mb-12"
-          >
+          <motion.div {...revealSection} className="max-w-2xl mb-12">
             <span className="inline-flex items-center gap-2 text-accent text-sm font-semibold uppercase tracking-wider mb-3">
               <Globe className="w-4 h-4" />
               {t("sections.websitesLabel")}
@@ -174,13 +172,7 @@ const Index = () => {
 
       {/* Contact CTA */}
       <section id="contact" className="container mx-auto px-6 py-20 md:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 200 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto text-center"
-        >
+        <motion.div {...revealSection} className="max-w-2xl mx-auto text-center">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/8 mb-6">
             <Mail className="w-6 h-6 text-primary" />
           </div>
@@ -199,6 +191,7 @@ const Index = () => {
           </a>
         </motion.div>
       </section>
+      </main>
 
       <Footer />
     </div>

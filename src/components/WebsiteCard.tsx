@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import { EASE_OUT } from "@/lib/motion";
 
 interface WebsiteCardProps {
   name: string;
@@ -12,10 +13,10 @@ interface WebsiteCardProps {
 const WebsiteCard = ({ name, description, url, screenshot, index = 0 }: WebsiteCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 260 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 1.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: EASE_OUT }}
     >
       <a
         href={url}
@@ -26,7 +27,9 @@ const WebsiteCard = ({ name, description, url, screenshot, index = 0 }: WebsiteC
         <div className="aspect-video overflow-hidden bg-muted">
           <img
             src={screenshot}
-            alt={name}
+            alt={`Aperçu du site ${name}`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
           />
         </div>

@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { apps } from "@/data/apps";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { SITE_URL } from "@/lib/site";
 import { ArrowLeft, ExternalLink, Shield, FileText } from "lucide-react";
 
 const AppDetail = () => {
@@ -13,6 +15,7 @@ const AppDetail = () => {
   if (!app) {
     return (
       <div className="min-h-screen flex flex-col">
+        <Seo title={t("appDetail.appNotFound")} description={t("appDetail.appNotFound")} noindex />
         <Header />
         <div className="flex-1 flex items-center justify-center">
           <p className="text-muted-foreground">{t("appDetail.appNotFound")}</p>
@@ -23,12 +26,33 @@ const AppDetail = () => {
   }
 
   const features = t(`apps.${app.id}.features`, { returnObjects: true }) as string[];
+  const category = t(`apps.${app.id}.category`);
+  const description = t(`apps.${app.id}.description`);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: app.name,
+    applicationCategory: category,
+    operatingSystem: "iOS",
+    description,
+    url: `${SITE_URL}/app/${app.id}`,
+    downloadUrl: app.appStoreUrl,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+    author: { "@type": "Person", name: "Yoan Soussand" },
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title={t("seo.appTitle", { name: app.name, category })}
+        description={description}
+        path={`/app/${app.id}`}
+        jsonLd={jsonLd}
+      />
       <Header />
 
-      <main className="container mx-auto px-6 py-12 max-w-3xl flex-1">
+      <main id="main-content" className="container mx-auto px-6 py-12 max-w-3xl flex-1">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
@@ -40,7 +64,10 @@ const AppDetail = () => {
         <div className="flex items-start gap-6 mb-8">
           <img
             src={app.icon}
-            alt={app.name}
+            alt={`Icône de l'application ${app.name}`}
+            width={96}
+            height={96}
+            decoding="async"
             className="w-24 h-24 rounded-2xl shadow-lg flex-shrink-0"
           />
           <div>
