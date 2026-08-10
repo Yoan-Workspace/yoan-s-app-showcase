@@ -8,9 +8,31 @@ import {
   SignedDataVerifier,
 } from "@apple/app-store-server-library";
 
-const BUNDLE_ID = "com.yoansoussand.Rappel-Produit";
-const APP_APPLE_ID = 6449599235;
-const PREMIUM_PRODUCT_ID = "com.yoansoussand.rappelproduit.premium";
+type AppConfig = {
+  name: string;
+  bundleId: string;
+  appAppleId: number;
+  productIds: ReadonlySet<string>;
+};
+
+const APPS: readonly AppConfig[] = [
+  {
+    name: "Rappel Produit",
+    bundleId: "com.yoansoussand.Rappel-Produit",
+    appAppleId: 6449599235,
+    productIds: new Set(["com.yoansoussand.rappelproduit.premium"]),
+  },
+  {
+    name: "AllFaves",
+    bundleId: "com.yoansoussand.AllFaves",
+    appAppleId: 6760546463,
+    productIds: new Set([
+      "com.yoansoussand.allfaves.premium",
+      "com.yoansoussand.allfaves.premium.monthly",
+      "com.yoansoussand.allfaves.premium.annual",
+    ]),
+  },
+];
 
 const moduleDir = dirname(fileURLToPath(import.meta.url));
 
@@ -40,37 +62,63 @@ function loadAppleRootCertificate(): Buffer {
   throw new Error("Apple Root CA G3 certificate not found");
 }
 
-function createVerifier(environment: Environment): SignedDataVerifier {
+function createVerifier(app: AppConfig, environment: Environment): SignedDataVerifier {
   const rootCA = loadAppleRootCertificate();
   return new SignedDataVerifier(
     [rootCA],
     false,
     environment,
-    BUNDLE_ID,
-    APP_APPLE_ID
+    app.bundleId,
+    app.appAppleId
   );
 }
 
 async function verifyNotification(signedPayload: string) {
-  const productionVerifier = createVerifier(Environment.PRODUCTION);
-  try {
-    return {
-      environment: Environment.PRODUCTION,
-      payload: await productionVerifier.verifyAndDecodeNotification(signedPayload),
-    };
-  } catch {
-    const sandboxVerifier = createVerifier(Environment.SANDBOX);
-    return {
-      environment: Environment.SANDBOX,
-      payload: await sandboxVerifier.verifyAndDecodeNotification(signedPayload),
-    };
+  let lastError: unknown;
+
+  for (const app of APPS) {
+    for (const environment of [Environment.PRODUCTION, Environment.SANDBOX]) {
+      try {
+        const verifier = createVerifier(app, environment);
+        const payload = await verifier.verifyAndDecodeNotification(signedPayload);
+        return { app, environment, payload, verifier };
+      } catch (error) {
+        lastError = error;
+      }
+    }
   }
+
+  throw lastError ?? new Error("Unable to verify notification for any known app");
+}
+
+function productLabel(productId?: string): string | undefined {
+  if (!productId) return undefined;
+  if (productId.endsWith(".monthly")) return `${productId} (mensuel)`;
+  if (productId.endsWith(".annual")) return `${productId} (annuel)`;
+  if (productId.endsWith(".premium")) return `${productId} (achat unique)`;
+  return productId;
 }
 
 function notificationLabel(type: string, subtype?: string): string {
   switch (type) {
     case NotificationTypeV2.ONE_TIME_CHARGE:
       return "Nouvel achat Premium";
+    case NotificationTypeV2.SUBSCRIBED:
+      return "Nouvel abonnement Premium";
+    case NotificationTypeV2.DID_RENEW:
+      return "Renouvellement Premium";
+    case NotificationTypeV2.DID_FAIL_TO_RENEW:
+      return "Échec de renouvellement Premium";
+    case NotificationTypeV2.EXPIRED:
+      return "Abonnement Premium expiré";
+    case NotificationTypeV2.GRACE_PERIOD_EXPIRED:
+      return "Période de grâce Premium expirée";
+    case NotificationTypeV2.DID_CHANGE_RENEWAL_STATUS:
+      return subtype === "AUTO_RENEW_DISABLED"
+        ? "Renouvellement auto désactivé"
+        : subtype === "AUTO_RENEW_ENABLED"
+          ? "Renouvellement auto activé"
+          : "Changement de renouvellement";
     case NotificationTypeV2.REFUND:
       return "Remboursement Premium";
     case NotificationTypeV2.REVOKE:
@@ -105,10 +153,15 @@ async function sendNtfy(env: AlertEnv, title: string, message: string): Promise<
   }
 }
 
-async function sendEmail(env: AlertEnv, title: string, message: string): Promise<void> {
+async function sendEmail(
+  env: AlertEnv,
+  appName: string,
+  title: string,
+  message: string
+): Promise<void> {
   if (!env.RESEND_API_KEY || !env.ALERT_EMAIL_TO) return;
 
-  const from = env.ALERT_EMAIL_FROM ?? "Rappel Produit <onboarding@resend.dev>";
+  const from = env.ALERT_EMAIL_FROM ?? `${appName} <onboarding@resend.dev>`;
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -118,7 +171,7 @@ async function sendEmail(env: AlertEnv, title: string, message: string): Promise
     body: JSON.stringify({
       from,
       to: [env.ALERT_EMAIL_TO],
-      subject: `[Rappel Produit] ${title}`,
+      subject: `[${appName}] ${title}`,
       text: message,
     }),
   });
@@ -130,6 +183,7 @@ async function sendEmail(env: AlertEnv, title: string, message: string): Promise
 
 async function notifyDeveloper(
   env: AlertEnv,
+  appName: string,
   title: string,
   details: Record<string, string | undefined>
 ): Promise<void> {
@@ -138,9 +192,11 @@ async function notifyDeveloper(
     .map(([key, value]) => `${key}: ${value}`)
     .join("\n");
 
+  const alertTitle = `${appName} — ${title}`;
+
   await Promise.all([
-    sendNtfy(env, title, message),
-    sendEmail(env, title, message),
+    sendNtfy(env, alertTitle, message),
+    sendEmail(env, appName, title, message),
   ]);
 }
 
@@ -161,7 +217,9 @@ export const handler: Handler = async (event: HandlerEvent) => {
       };
     }
 
-    const { environment, payload } = await verifyNotification(body.signedPayload);
+    const { app, environment, payload, verifier } = await verifyNotification(
+      body.signedPayload
+    );
     const type = payload.notificationType ?? "UNKNOWN";
     const subtype = payload.subtype;
     const title = notificationLabel(type, subtype);
@@ -171,7 +229,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
     let purchaseDate: string | undefined;
 
     if (payload.data?.signedTransactionInfo) {
-      const verifier = createVerifier(environment);
       const transaction = await verifier.verifyAndDecodeTransaction(
         payload.data.signedTransactionInfo
       );
@@ -182,8 +239,12 @@ export const handler: Handler = async (event: HandlerEvent) => {
         : undefined;
     }
 
-    if (productId && productId !== PREMIUM_PRODUCT_ID && type !== NotificationTypeV2.TEST) {
-      console.log("Ignored product", productId, type);
+    if (
+      productId &&
+      !app.productIds.has(productId) &&
+      type !== NotificationTypeV2.TEST
+    ) {
+      console.log("Ignored product", { app: app.name, productId, type });
       return { statusCode: 200, body: JSON.stringify({ ok: true, ignored: true }) };
     }
 
@@ -195,22 +256,29 @@ export const handler: Handler = async (event: HandlerEvent) => {
       ALERT_EMAIL_FROM: process.env.ALERT_EMAIL_FROM,
     };
 
-    await notifyDeveloper(env, title, {
+    await notifyDeveloper(env, app.name, title, {
+      App: app.name,
       Environnement: environment,
       Type: type,
       SousType: subtype,
-      Produit: productId,
+      Produit: productLabel(productId),
       Transaction: transactionId,
       Date: purchaseDate,
-      Bundle: payload.data?.bundleId,
+      Bundle: payload.data?.bundleId ?? app.bundleId,
       UUID: payload.notificationUUID,
     });
 
-    console.log("ASN handled", { type, subtype, environment, productId });
+    console.log("ASN handled", {
+      app: app.name,
+      type,
+      subtype,
+      environment,
+      productId,
+    });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ ok: true }),
+      body: JSON.stringify({ ok: true, app: app.name }),
     };
   } catch (error) {
     console.error("ASN verification failed", error);

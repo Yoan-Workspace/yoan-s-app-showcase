@@ -56,9 +56,16 @@ Hébergé sur Netlify. Le fichier `public/_redirects` gère le fallback SPA vers
 
 Configuration dans `netlify.toml` : build Vite → `dist`, plus les Netlify Functions.
 
-### App Store Server Notifications (Rappel Produit)
+### App Store Server Notifications (Rappel Produit & AllFaves)
 
-Endpoint serveur pour recevoir les alertes Apple quand un utilisateur achète le Premium. Aucune modification de l'app iOS.
+Endpoint serveur pour recevoir les alertes Apple quand un utilisateur achète le Premium. Aucune modification des apps iOS. L'endpoint reconnaît automatiquement l'app via le bundle ID.
+
+**Apps supportées :**
+
+| App | Bundle ID | Produits |
+|-----|-----------|----------|
+| Rappel Produit | `com.yoansoussand.Rappel-Produit` | achat unique Premium |
+| AllFaves | `com.yoansoussand.AllFaves` | Premium mensuel / annuel (+ legacy achat unique) |
 
 **URL de production :**
 
@@ -66,7 +73,7 @@ Endpoint serveur pour recevoir les alertes Apple quand un utilisateur achète le
 https://yoanfreelancedev.netlify.app/.netlify/functions/apple-notifications
 ```
 
-Configurer cette URL dans App Store Connect → Rappel Produit → App Store Server Notifications (V2), production et sandbox.
+Configurer cette URL dans App Store Connect → chaque app → App Store Server Notifications (V2), production et sandbox.
 
 **Variables d'environnement Netlify :**
 
