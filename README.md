@@ -54,6 +54,32 @@ src/
 
 Hébergé sur Netlify. Le fichier `public/_redirects` gère le fallback SPA vers `index.html`.
 
+Configuration dans `netlify.toml` : build Vite → `dist`, plus les Netlify Functions.
+
+### App Store Server Notifications (Rappel Produit)
+
+Endpoint serveur pour recevoir les alertes Apple quand un utilisateur achète le Premium. Aucune modification de l'app iOS.
+
+**URL de production :**
+
+```
+https://yoanfreelancedev.netlify.app/.netlify/functions/apple-notifications
+```
+
+Configurer cette URL dans App Store Connect → Rappel Produit → App Store Server Notifications (V2), production et sandbox.
+
+**Variables d'environnement Netlify :**
+
+| Variable | Description |
+|----------|-------------|
+| `NTFY_TOPIC` | Topic ntfy pour les alertes push (recommandé) |
+| `NTFY_TOKEN` | Optionnel, si topic privé |
+| `RESEND_API_KEY` | Optionnel, alertes e-mail via Resend |
+| `ALERT_EMAIL_TO` | E-mail de destination |
+| `ALERT_EMAIL_FROM` | E-mail source (si Resend) |
+
+Test local : `netlify dev` (CLI globale : `npm i -g netlify-cli`) puis envoyer une notification test depuis App Store Connect.
+
 ## Licence
 
 © Yoan Soussand. Tous droits réservés.
