@@ -1,1 +1,5 @@
+# Ne jamais réécrire les endpoints Netlify (functions, identity, etc.)
+/.netlify/*  /.netlify/:splat  200
+
+# Fallback SPA
 /*    /index.html   200
