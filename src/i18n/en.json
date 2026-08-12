@@ -168,6 +168,37 @@
           { "title": "11. Contact", "content": "For any questions regarding this privacy policy, contact us through the application: About → Contact us." }
         ]
       }
+    },
+    "phototopdf": {
+      "tagline": "Scan, convert and organize your PDFs",
+      "description": "Turn photos and scans into polished PDF documents in seconds. Import from your library, capture with the camera or scan documents, then organize everything into folders, rename, move and share. Add your signature, adjust margins and keep working without interruptions with Premium.",
+      "category": "Productivity",
+      "features": [
+        "Scan documents or import photos",
+        "Create and organize PDFs in folders",
+        "Insert your signature on pages",
+        "Premium: no ads and unlimited pages"
+      ],
+      "privacy": {
+        "lastUpdated": "August 12, 2026",
+        "sections": [
+          { "title": "1. Introduction", "content": "This privacy policy describes how Convert Scanner to PDF (PhotoToPDF), developed by Yoan Soussand, collects, uses and protects your personal information. By using the application, you agree to the practices described in this policy." },
+          { "title": "2. Data collected", "content": "Convert Scanner to PDF does not create user accounts and does not sell your personal data. Documents you create (photos, scans and PDFs) are stored locally on your device. The application may collect anonymous usage data via Firebase Analytics and, if you have not purchased Premium, advertising identifiers via Google AdMob." },
+          { "title": "3. Local storage", "content": "Your PDF files, folders, signature and preferences are stored locally in the app sandbox on your device. We do not upload your documents to our own servers." },
+          { "title": "4. Camera and photo library", "content": "The camera and photo library are used only to capture or import images that you choose to convert into PDF pages. Images are processed on your device. No image is sent to us for storage." },
+          { "title": "5. Google AdMob advertising", "content": "The free version may display ads via Google AdMob. Ads are disabled if you purchase Premium (lifetime purchase or subscription). Google AdMob may collect and use data to serve ads, including your advertising identifier (IDFA), approximate location and anonymous usage data, in accordance with Google's privacy policy: policies.google.com/privacy" },
+          { "title": "6. App Tracking Transparency (ATT)", "content": "In accordance with Apple's requirements, the application may ask for permission to track your activity for personalized ads. If you decline, non-personalized ads may still be shown. You can change your choice in Settings → Privacy → Tracking." },
+          { "title": "7. GDPR consent — Google AdMob", "content": "For users in the European Economic Area, the application uses Google's UMP SDK to collect your consent in accordance with GDPR before any advertising data collection." },
+          { "title": "8. In-app purchases and subscriptions", "content": "Convert Scanner to PDF offers optional Premium access through the Apple App Store: a lifetime non-consumable purchase and auto-renewable subscriptions (monthly and annual) to remove ads and unlock unlimited pages. Payments are entirely handled by Apple. No payment card data is collected by the application. Purchases can be restored via \"Restore purchases\". Subscription management is done in your Apple ID settings." },
+          { "title": "9. Third-party services", "content": "The application may use Google AdMob (advertising, if not Premium), Firebase Analytics / Crashlytics (anonymous analytics and crash reports) and Apple frameworks (StoreKit, VisionKit, Photos). These services are subject to their own privacy policies." },
+          { "title": "10. Data sharing", "content": "We do not sell your personal data to third parties. The only data that may be shared are anonymous advertising or analytics identifiers transmitted to Google, subject to your consent where required." },
+          { "title": "11. Security", "content": "Your documents remain on your device. Communications with third-party SDKs use secure connections when applicable. Uninstalling the app deletes locally stored app data from the device." },
+          { "title": "12. Your rights (GDPR)", "content": "In accordance with GDPR, you have the rights of access, rectification, erasure and objection. To exercise rights regarding Google advertising data, visit myaccount.google.com/data-and-privacy. You can also delete app data by uninstalling the application." },
+          { "title": "13. Children", "content": "Convert Scanner to PDF is not intended for children under 13 years of age due to the presence of advertising in the free version. We encourage parental controls on the device." },
+          { "title": "14. Changes", "content": "We reserve the right to update this privacy policy, particularly if advertising, analytics or purchase terms change." },
+          { "title": "15. Contact", "content": "For any questions regarding this privacy policy, contact us at yoansoussand@gmail.com or through the application page on the App Store." }
+        ]
+      }
     }
   },
   "websites": {

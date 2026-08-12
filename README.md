@@ -56,7 +56,7 @@ Hébergé sur Netlify. Le fichier `public/_redirects` gère le fallback SPA vers
 
 Configuration dans `netlify.toml` : build Vite → `dist`, plus les Netlify Functions.
 
-### App Store Server Notifications (Rappel Produit & AllFaves)
+### App Store Server Notifications (Rappel Produit, AllFaves & PhotoToPDF)
 
 Endpoint serveur pour recevoir les alertes Apple quand un utilisateur achète le Premium. Aucune modification des apps iOS. L'endpoint reconnaît automatiquement l'app via le bundle ID.
 
@@ -66,6 +66,7 @@ Endpoint serveur pour recevoir les alertes Apple quand un utilisateur achète le
 |-----|-----------|----------|
 | Rappel Produit | `com.yoansoussand.Rappel-Produit` | achat unique Premium |
 | AllFaves | `com.yoansoussand.AllFaves` | Premium mensuel / annuel (+ legacy achat unique) |
+| Convert Scanner to PDF | `com.yoansoussand.PhotoToPDF` | Premium à vie, mensuel, annuel |
 
 **URL de production :**
 

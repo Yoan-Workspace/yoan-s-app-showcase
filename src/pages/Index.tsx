@@ -107,7 +107,7 @@ const Index = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
             {[
-              { value: "4", label: t("stats.apps") },
+              { value: "5", label: t("stats.apps") },
               { value: "3", label: t("stats.websites") },
               { value: "iOS", label: t("stats.platform") },
               { value: "2020", label: t("stats.since") },

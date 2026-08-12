@@ -29,6 +29,16 @@ const APPS: readonly AppConfig[] = [
       "com.yoansoussand.allfaves.premium.annual",
     ]),
   },
+  {
+    name: "Convert Scanner to PDF",
+    bundleId: "com.yoansoussand.PhotoToPDF",
+    appAppleId: 6478161902,
+    productIds: new Set([
+      "com.phototopdf.removeads.lifetime",
+      "com.yoansoussand.phototopdf.MonthlySubscribe",
+      "com.yoansoussand.phototopdf.AnnuallySubscribe",
+    ]),
+  },
 ];
 
 // Apple Root CA G3 — embarqué pour éviter import.meta.url / chemins fichiers
@@ -80,8 +90,15 @@ async function verifyNotification(signedPayload: string) {
 
 function productLabel(productId?: string): string | undefined {
   if (!productId) return undefined;
-  if (productId.endsWith(".monthly")) return `${productId} (mensuel)`;
-  if (productId.endsWith(".annual")) return `${productId} (annuel)`;
+  if (productId.includes("lifetime") || productId.includes("removeads")) {
+    return `${productId} (à vie)`;
+  }
+  if (productId.endsWith(".monthly") || productId.includes("MonthlySubscribe")) {
+    return `${productId} (mensuel)`;
+  }
+  if (productId.endsWith(".annual") || productId.includes("AnnuallySubscribe")) {
+    return `${productId} (annuel)`;
+  }
   if (productId.endsWith(".premium")) return `${productId} (achat unique)`;
   return productId;
 }

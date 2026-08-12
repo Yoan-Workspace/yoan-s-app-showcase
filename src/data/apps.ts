@@ -2,6 +2,7 @@ import rappelIcon from "@/assets/rappel-produit-icon.png";
 import mysteryIcon from "@/assets/mysterypix-icon.png";
 import mathIcon from "@/assets/math-match-icon.png";
 import allFavesIcon from "@/assets/AllFaves-icon.png";
+import photoToPdfIcon from "@/assets/phototopdf-icon.jpeg";
 import { AppData } from "./types";
 
 export const apps: AppData[] = [
@@ -28,5 +29,11 @@ export const apps: AppData[] = [
     name: "AllFaves",
     icon: allFavesIcon,
     appStoreUrl: "https://apps.apple.com/app/allfaves/id6760546463",
+  },
+  {
+    id: "phototopdf",
+    name: "Convert Scanner to PDF",
+    icon: photoToPdfIcon,
+    appStoreUrl: "https://apps.apple.com/app/convert-scanner-to-pdf/id6478161902",
   },
 ];
