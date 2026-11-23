@@ -3,6 +3,7 @@ import {
   Environment,
   NotificationTypeV2,
   SignedDataVerifier,
+  VerificationException,
 } from "@apple/app-store-server-library";
 
 type AppConfig = {
@@ -63,11 +64,25 @@ function createVerifier(app: AppConfig, environment: Environment): SignedDataVer
   const rootCA = loadAppleRootCertificate();
   return new SignedDataVerifier(
     [rootCA],
-    false,
+    false, // pas d'OCSP en serverless (peut échouer / ralentir)
     environment,
     app.bundleId,
     app.appAppleId
   );
+}
+
+function describeVerifyError(error: unknown): Record<string, unknown> {
+  if (error instanceof VerificationException) {
+    return {
+      name: "VerificationException",
+      status: error.status,
+      cause: error.cause instanceof Error ? error.cause.message : undefined,
+    };
+  }
+  if (error instanceof Error) {
+    return { name: error.name, message: error.message };
+  }
+  return { error: String(error) };
 }
 
 async function verifyNotification(signedPayload: string) {
@@ -85,7 +100,16 @@ async function verifyNotification(signedPayload: string) {
     }
   }
 
+  console.error("ASN verify exhausted", describeVerifyError(lastError));
   throw lastError ?? new Error("Unable to verify notification for any known app");
+}
+
+function parseRequestBody(event: HandlerEvent): { signedPayload?: string } {
+  const raw = event.body ?? "{}";
+  const text = event.isBase64Encoded
+    ? Buffer.from(raw, "base64").toString("utf8")
+    : raw;
+  return JSON.parse(text) as { signedPayload?: string };
 }
 
 function productLabel(productId?: string): string | undefined {
@@ -213,7 +237,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
   }
 
   try {
-    const body = JSON.parse(event.body ?? "{}") as { signedPayload?: string };
+    const body = parseRequestBody(event);
     if (!body.signedPayload) {
       return {
         statusCode: 400,
@@ -285,7 +309,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
       body: JSON.stringify({ ok: true, app: app.name }),
     };
   } catch (error) {
-    console.error("ASN verification failed", error);
+    console.error("ASN verification failed", describeVerifyError(error));
     return {
       statusCode: 400,
       body: JSON.stringify({ error: "Invalid notification" }),

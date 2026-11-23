@@ -5,3 +5,17 @@
 
 [functions]
   node_bundler = "esbuild"
+  # Laisser la lib Apple hors du bundle esbuild : sinon la vérif JWS
+  # échoue en prod (HTTP 400) alors qu'elle passe en local.
+  external_node_modules = [
+    "@apple/app-store-server-library",
+    "jsonwebtoken",
+    "jsrsasign"
+  ]
+
+[functions."apple-notifications"]
+  external_node_modules = [
+    "@apple/app-store-server-library",
+    "jsonwebtoken",
+    "jsrsasign"
+  ]
