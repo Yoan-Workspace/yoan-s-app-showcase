@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:apple-asn": "node scripts/send-apple-test-notification.mjs"
   },
   "dependencies": {
     "@apple/app-store-server-library": "^1.6.0",
