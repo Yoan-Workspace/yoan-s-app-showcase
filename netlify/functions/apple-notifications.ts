@@ -1,29 +1,41 @@
+import { X509Certificate } from "node:crypto";
 import type { Handler, HandlerEvent } from "@netlify/functions";
-import {
-  Environment,
-  NotificationTypeV2,
-  SignedDataVerifier,
-  VerificationException,
-} from "@apple/app-store-server-library";
+import jwt from "jsonwebtoken";
 
 type AppConfig = {
   name: string;
   bundleId: string;
-  appAppleId: number;
   productIds: ReadonlySet<string>;
+};
+
+type NotificationPayload = {
+  notificationType?: string;
+  subtype?: string;
+  notificationUUID?: string;
+  data?: {
+    bundleId?: string;
+    environment?: string;
+    signedTransactionInfo?: string;
+  };
+};
+
+type TransactionPayload = {
+  productId?: string;
+  transactionId?: string;
+  purchaseDate?: number;
+  bundleId?: string;
+  environment?: string;
 };
 
 const APPS: readonly AppConfig[] = [
   {
     name: "Rappel Produit",
     bundleId: "com.yoansoussand.Rappel-Produit",
-    appAppleId: 6449599235,
     productIds: new Set(["com.yoansoussand.rappelproduit.premium"]),
   },
   {
     name: "AllFaves",
     bundleId: "com.yoansoussand.AllFaves",
-    appAppleId: 6760546463,
     productIds: new Set([
       "com.yoansoussand.allfaves.premium",
       "com.yoansoussand.allfaves.premium.monthly",
@@ -33,7 +45,6 @@ const APPS: readonly AppConfig[] = [
   {
     name: "Convert Scanner to PDF",
     bundleId: "com.yoansoussand.PhotoToPDF",
-    appAppleId: 6478161902,
     productIds: new Set([
       "com.phototopdf.removeads.lifetime",
       "com.yoansoussand.phototopdf.MonthlySubscribe",
@@ -42,9 +53,7 @@ const APPS: readonly AppConfig[] = [
   },
 ];
 
-// Apple Root CA G3 — embarqué pour éviter import.meta.url / chemins fichiers
-// cassés après le bundling CJS de Netlify Functions.
-// Source publique : https://www.apple.com/certificateauthority/AppleRootCA-G3.cer
+// Apple Root CA G3 — https://www.apple.com/certificateauthority/AppleRootCA-G3.cer
 const APPLE_ROOT_CA_G3_BASE64 =
   "MIICQzCCAcmgAwIBAgIILcX8iNLFS5UwCgYIKoZIzj0EAwMwZzEbMBkGA1UEAwwSQXBwbGUgUm9vdCBDQSAtIEczMSYwJAYDVQQLDB1BcHBsZSBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwHhcNMTQwNDMwMTgxOTA2WhcNMzkwNDMwMTgxOTA2WjBnMRswGQYDVQQDDBJBcHBsZSBSb290IENBIC0gRzMxJjAkBgNVBAsMHUFwcGxlIENlcnRpZmljYXRpb24gQXV0aG9yaXR5MRMwEQYDVQQKDApBcHBsZSBJbmMuMQswCQYDVQQGEwJVUzB2MBAGByqGSM49AgEGBSuBBAAiA2IABJjpLz1AcqTtkyJygRMc3RCV8cWjTnHcFBbZDuWmBSp3ZHtfTjjTuxxEtX/1H7YyYl3J6YRbTzBPEVoA/VhYDKX1DyxNB0cTddqXl5dvMVztK517IDvYuVTZXpmkOlEKMaNCMEAwHQYDVR0OBBYEFLuw3qFYM4iapIqZ3r6966/ayySrMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgEGMAoGCCqGSM49BAMDA2gAMGUCMQCD6cHEFl4aXTQY2e3v9GwOAEZLuN+yRhHFD/3meoyhpmvOwgPUnPWTxnS4at+qIxUCMG1mihDK1A3UT82NQz60imOlM27jbdoXt2QfyFMm+YhidDkLF1vLUagM6BgD56KyKA==";
 
@@ -56,52 +65,50 @@ type AlertEnv = {
   ALERT_EMAIL_FROM?: string;
 };
 
-function loadAppleRootCertificate(): Buffer {
-  return Buffer.from(APPLE_ROOT_CA_G3_BASE64, "base64");
-}
-
-function createVerifier(app: AppConfig, environment: Environment): SignedDataVerifier {
-  const rootCA = loadAppleRootCertificate();
-  return new SignedDataVerifier(
-    [rootCA],
-    false, // pas d'OCSP en serverless (peut échouer / ralentir)
-    environment,
-    app.bundleId,
-    app.appAppleId
-  );
-}
-
-function describeVerifyError(error: unknown): Record<string, unknown> {
-  if (error instanceof VerificationException) {
-    return {
-      name: "VerificationException",
-      status: error.status,
-      cause: error.cause instanceof Error ? error.cause.message : undefined,
-    };
-  }
-  if (error instanceof Error) {
-    return { name: error.name, message: error.message };
-  }
-  return { error: String(error) };
-}
-
-async function verifyNotification(signedPayload: string) {
-  let lastError: unknown;
-
-  for (const app of APPS) {
-    for (const environment of [Environment.PRODUCTION, Environment.SANDBOX]) {
-      try {
-        const verifier = createVerifier(app, environment);
-        const payload = await verifier.verifyAndDecodeNotification(signedPayload);
-        return { app, environment, payload, verifier };
-      } catch (error) {
-        lastError = error;
-      }
-    }
+/**
+ * Vérifie un JWS Apple (x5c) avec node:crypto uniquement.
+ * Évite @apple/app-store-server-library + jsrsasign, cassés par le bundling Netlify.
+ */
+function verifyAppleJws<T extends object>(signedPayload: string): T {
+  const decoded = jwt.decode(signedPayload, { complete: true });
+  if (!decoded || typeof decoded === "string" || !decoded.header) {
+    throw new Error("Invalid JWS");
   }
 
-  console.error("ASN verify exhausted", describeVerifyError(lastError));
-  throw lastError ?? new Error("Unable to verify notification for any known app");
+  const x5c = decoded.header.x5c;
+  if (!Array.isArray(x5c) || x5c.length < 2) {
+    throw new Error("Missing x5c certificate chain");
+  }
+
+  const leaf = new X509Certificate(Buffer.from(x5c[0], "base64"));
+  const intermediate = new X509Certificate(Buffer.from(x5c[1], "base64"));
+  const root = new X509Certificate(Buffer.from(APPLE_ROOT_CA_G3_BASE64, "base64"));
+
+  if (!leaf.verify(intermediate.publicKey)) {
+    throw new Error("Leaf certificate not signed by intermediate");
+  }
+  if (!intermediate.verify(root.publicKey)) {
+    throw new Error("Intermediate certificate not signed by Apple Root CA G3");
+  }
+
+  const now = Date.now();
+  if (new Date(leaf.validFrom).getTime() > now + 60_000) {
+    throw new Error("Leaf certificate not yet valid");
+  }
+  if (new Date(leaf.validTo).getTime() < now - 60_000) {
+    throw new Error("Leaf certificate expired");
+  }
+
+  const pem = leaf.publicKey.export({ type: "spki", format: "pem" });
+  return jwt.verify(signedPayload, pem, { algorithms: ["ES256"] }) as T;
+}
+
+function resolveApp(bundleId?: string): AppConfig {
+  const app = APPS.find((candidate) => candidate.bundleId === bundleId);
+  if (!app) {
+    throw new Error(`Unknown bundleId: ${bundleId ?? "(missing)"}`);
+  }
+  return app;
 }
 
 function parseRequestBody(event: HandlerEvent): { signedPayload?: string } {
@@ -129,29 +136,29 @@ function productLabel(productId?: string): string | undefined {
 
 function notificationLabel(type: string, subtype?: string): string {
   switch (type) {
-    case NotificationTypeV2.ONE_TIME_CHARGE:
+    case "ONE_TIME_CHARGE":
       return "Nouvel achat Premium";
-    case NotificationTypeV2.SUBSCRIBED:
+    case "SUBSCRIBED":
       return "Nouvel abonnement Premium";
-    case NotificationTypeV2.DID_RENEW:
+    case "DID_RENEW":
       return "Renouvellement Premium";
-    case NotificationTypeV2.DID_FAIL_TO_RENEW:
+    case "DID_FAIL_TO_RENEW":
       return "Échec de renouvellement Premium";
-    case NotificationTypeV2.EXPIRED:
+    case "EXPIRED":
       return "Abonnement Premium expiré";
-    case NotificationTypeV2.GRACE_PERIOD_EXPIRED:
+    case "GRACE_PERIOD_EXPIRED":
       return "Période de grâce Premium expirée";
-    case NotificationTypeV2.DID_CHANGE_RENEWAL_STATUS:
+    case "DID_CHANGE_RENEWAL_STATUS":
       return subtype === "AUTO_RENEW_DISABLED"
         ? "Renouvellement auto désactivé"
         : subtype === "AUTO_RENEW_ENABLED"
           ? "Renouvellement auto activé"
           : "Changement de renouvellement";
-    case NotificationTypeV2.REFUND:
+    case "REFUND":
       return "Remboursement Premium";
-    case NotificationTypeV2.REVOKE:
+    case "REVOKE":
       return "Révocation Premium";
-    case NotificationTypeV2.TEST:
+    case "TEST":
       return "Notification de test Apple";
     default:
       return subtype ? `${type} / ${subtype}` : type;
@@ -159,7 +166,10 @@ function notificationLabel(type: string, subtype?: string): string {
 }
 
 async function sendNtfy(env: AlertEnv, title: string, message: string): Promise<void> {
-  if (!env.NTFY_TOPIC) return;
+  if (!env.NTFY_TOPIC) {
+    console.error("NTFY_TOPIC missing — skip ntfy");
+    return;
+  }
 
   const headers: Record<string, string> = {
     Title: title,
@@ -245,9 +255,9 @@ export const handler: Handler = async (event: HandlerEvent) => {
       };
     }
 
-    const { app, environment, payload, verifier } = await verifyNotification(
-      body.signedPayload
-    );
+    const payload = verifyAppleJws<NotificationPayload>(body.signedPayload);
+    const app = resolveApp(payload.data?.bundleId);
+    const environment = payload.data?.environment ?? "Unknown";
     const type = payload.notificationType ?? "UNKNOWN";
     const subtype = payload.subtype;
     const title = notificationLabel(type, subtype);
@@ -257,7 +267,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     let purchaseDate: string | undefined;
 
     if (payload.data?.signedTransactionInfo) {
-      const transaction = await verifier.verifyAndDecodeTransaction(
+      const transaction = verifyAppleJws<TransactionPayload>(
         payload.data.signedTransactionInfo
       );
       productId = transaction.productId;
@@ -267,11 +277,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
         : undefined;
     }
 
-    if (
-      productId &&
-      !app.productIds.has(productId) &&
-      type !== NotificationTypeV2.TEST
-    ) {
+    if (productId && !app.productIds.has(productId) && type !== "TEST") {
       console.log("Ignored product", { app: app.name, productId, type });
       return { statusCode: 200, body: JSON.stringify({ ok: true, ignored: true }) };
     }
@@ -302,6 +308,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
       subtype,
       environment,
       productId,
+      ntfyConfigured: Boolean(env.NTFY_TOPIC),
     });
 
     return {
@@ -309,10 +316,11 @@ export const handler: Handler = async (event: HandlerEvent) => {
       body: JSON.stringify({ ok: true, app: app.name }),
     };
   } catch (error) {
-    console.error("ASN verification failed", describeVerifyError(error));
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("ASN verification failed", message);
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: "Invalid notification" }),
+      body: JSON.stringify({ error: "Invalid notification", detail: message }),
     };
   }
 };
