@@ -165,14 +165,19 @@ function notificationLabel(type: string, subtype?: string): string {
   }
 }
 
+/** Headers HTTP = Latin-1 only ; un tiret long "—" fait planter fetch. */
+function toHttpHeaderValue(value: string): string {
+  return value.replace(/[^\x20-\x7E]/g, "-");
+}
+
 async function sendNtfy(env: AlertEnv, title: string, message: string): Promise<void> {
   if (!env.NTFY_TOPIC) {
-    console.error("NTFY_TOPIC missing — skip ntfy");
+    console.error("NTFY_TOPIC missing - skip ntfy");
     return;
   }
 
   const headers: Record<string, string> = {
-    Title: title,
+    Title: toHttpHeaderValue(title),
     Priority: "high",
     Tags: "apple,moneybag",
   };
@@ -230,12 +235,18 @@ async function notifyDeveloper(
     .map(([key, value]) => `${key}: ${value}`)
     .join("\n");
 
-  const alertTitle = `${appName} — ${title}`;
+  const alertTitle = `${appName} - ${title}`;
 
-  await Promise.all([
+  // Ne pas faire échouer la réponse Apple si ntfy/mail plante
+  const results = await Promise.allSettled([
     sendNtfy(env, alertTitle, message),
     sendEmail(env, appName, title, message),
   ]);
+  for (const result of results) {
+    if (result.status === "rejected") {
+      console.error("alert channel failed", result.reason);
+    }
+  }
 }
 
 export const handler: Handler = async (event: HandlerEvent) => {
